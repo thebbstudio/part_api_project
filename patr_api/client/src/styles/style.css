@@ -1,0 +1,96 @@
+@import url('./fonts.css');
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+body {
+  font-family: generalFont;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: headerFont;
+}
+h1 {
+  font-size: 1.5rem;
+}
+h2 {
+  font-size: 1.4rem;
+}
+h3 {
+  font-size: 1.3rem;
+}
+h4 {
+  font-size: 1.2rem;
+}
+h5 {
+  font-size: 1.1rem;
+}
+h6 {
+  font-size: 1rem;
+}
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 4rem 0 1.2rem;
+}
+
+
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+.link {
+  color: white;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.svg {
+  fill: #fff;
+  width: 30px;
+  height: 30px;
+  mix-blend-mode: normal;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.sliderVideo {
+  width: 100%;
+  margin-top: 5px;
+}
+.sliderVideo video {
+  display: inline-block;
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+.staff {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.staff-item {
+  width: 33.3333%;
+  margin-bottom: 70px;
+}
+
+.docs-title {
+  margin: 20px 0 15px;
+}
+.docs-ul li {
+  margin: 5px 0;
+}

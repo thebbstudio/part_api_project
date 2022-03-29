@@ -1,0 +1,12 @@
+@font-face {
+  font-family: generalFont;
+  src: url('../assets/fonts/Montserrat-Regular.ttf');
+}
+@font-face {
+  font-family: semiFont;
+  src: url('../assets/fonts/Montserrat-SemiBold.ttf');
+}
+@font-face {
+  font-family: headerFont;
+  src: url('../assets/fonts/Montserrat-Bold.ttf');
+}

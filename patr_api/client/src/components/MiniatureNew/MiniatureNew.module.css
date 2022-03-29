@@ -1,0 +1,23 @@
+.miniNew {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.miniNew .img {
+  padding: 0px 7px;
+}
+
+.miniNew .img img{
+  border-radius: 5px;
+}
+
+.miniNew p {
+  padding: 10px 7px 0;
+  font-family: semiFont;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; 
+}

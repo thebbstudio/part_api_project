@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a4dacad8.css",
+    "main.js": "/static/js/main.7763c1af.js",
+    "static/media/sliderItem1.webm": "/static/media/sliderItem1.648b5ccc2dd3ae3d307a.webm",
+    "static/media/sliderItem1.mp4": "/static/media/sliderItem1.172c50b74b3e6cde49b7.mp4",
+    "static/media/logov2.png": "/static/media/logov2.04be66c9cb787157d69d.png",
+    "static/media/10.jpg": "/static/media/10.5a0a7104583c96775042.jpg",
+    "static/media/w9QnjwAXPzQ.jpg": "/static/media/w9QnjwAXPzQ.ebf015b50c1e837190db.jpg",
+    "static/media/Montserrat-SemiBold.ttf": "/static/media/Montserrat-SemiBold.04af9a9e62bb4c47bd55.ttf",
+    "static/media/Montserrat-Bold.ttf": "/static/media/Montserrat-Bold.63fae500fdcf19ce83d4.ttf",
+    "static/media/Montserrat-Regular.ttf": "/static/media/Montserrat-Regular.ac98a5f5ca71180fe293.ttf",
+    "static/media/gilev2.jpg": "/static/media/gilev2.f34171424cb67964e109.jpg",
+    "static/media/bbslogop.jpg": "/static/media/bbslogop.3ba15a76e73648526ef8.jpg",
+    "index.html": "/index.html",
+    "main.a4dacad8.css.map": "/static/css/main.a4dacad8.css.map",
+    "main.7763c1af.js.map": "/static/js/main.7763c1af.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a4dacad8.css",
+    "static/js/main.7763c1af.js"
+  ]
+}

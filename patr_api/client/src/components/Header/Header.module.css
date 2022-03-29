@@ -1,0 +1,66 @@
+.Header {
+  background: linear-gradient(to top, #2C6F5C, #378b73);
+  color: white;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0 10px;
+}
+.logoImg {
+  display: inline-block;
+  max-width: 150px;
+  max-height: 150px;
+  margin-right: 5px;
+}
+
+.nameOrganization {
+  font-size: 1.8rem;
+}
+
+.contacts {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.contacts a {
+  color: white;
+  display: inline-block;
+  text-decoration: none;
+}
+
+@media (max-width: 1200px) {
+  .nameOrganization {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 1075px) {
+  .logoImg {
+    max-width: 130px;
+    max-height: 130px;
+  }
+  .nameOrganization {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 795px) {
+  .logoImg {
+    display: none;
+  }
+  .content {
+    justify-content: normal;
+  }
+  .nameOrganization {
+    font-size: 1.5rem;
+  }
+  .colHeader {
+    margin-right: auto;
+  }
+}
+@media (max-width: 750px) {
+  .Header {
+    display: none;
+  }
+}

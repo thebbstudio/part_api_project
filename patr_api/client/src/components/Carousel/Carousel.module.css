@@ -1,0 +1,52 @@
+.main {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.window {
+  width: 100%;
+  overflow: hidden;
+  margin: 0 10px;
+}
+.lenta {
+  display: flex;
+  transition: 0.45s;
+}
+.btn {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  fill: #2C6F5C;
+  transition: all 0.1s;
+}
+.svgLeft {
+  transform: rotate(90deg);
+}
+.svgLeft:hover {
+  transform: scale(1.1) rotate(90deg);
+  
+}
+.svgRight {
+  transform: rotate(-90deg);
+}
+.svgRight:hover {
+  transform: scale(1.1) rotate(-90deg);
+}
+
+.svg:hover {
+  fill: #378b73;
+}
+.svg:active {
+  opacity: 0.5;
+}

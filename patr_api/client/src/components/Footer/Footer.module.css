@@ -1,0 +1,101 @@
+.footer {
+  margin: 10px 0 0;
+  background: linear-gradient(to top, #378b73, #2C6F5C);;
+  color: white;
+}
+
+.content {
+  display: flex;
+  padding: 20px 0 0px;
+}
+
+.leftPart {
+  width: 60%;
+}
+.rightPart {
+  padding-left: 10px;
+  width: 40%;
+}
+
+.content div div {
+  width: 100%;
+  line-height: 150%;
+  margin-bottom: 1rem;
+}
+
+.socialLinks {
+  margin: 0 auto;
+}
+.socialLinks ul {
+  display: flex;
+  justify-content: center;
+  height: 50px;
+
+}
+
+.socialLinks ul li {
+  padding: 0px 20px;
+}
+
+.socialLinks ul li a {
+  font-family: semiFont;
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 1s;
+}
+
+.socialLinks ul li a::after {
+  display: block;
+	position: absolute;
+	left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+  bottom: -5px;
+	width: 0;/*задаём длинну линии до наведения курсора*/
+	height: 2px; /*задаём ширину линии*/
+	background-color: #fff; /*задаём цвет линии*/
+	content: "";
+	transition: width 0.2s ease-out;
+}
+
+.socialLinks ul li a:hover:after,
+.socialLinks ul li a:focus:after {
+	width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+}
+
+.socialLinks ul li a svg{
+  margin-left: 5px;
+}
+
+@media (max-width: 750px) {
+  .leftPart,
+  .rightPart {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    flex-direction: column;
+  }
+  .leftPart,
+  .rightPart {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+}
+
+@media (max-width: 430px) {
+  .socialLinks ul {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+  .socialLinks ul li {
+    padding: 10px 0px;
+  }
+}

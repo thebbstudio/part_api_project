@@ -1,0 +1,14 @@
+.staffItem {
+  display: inline-block;
+  text-align: center;
+}
+
+.staffImg {
+  max-width: 270px;
+  max-height: 270px;
+  margin: 0 auto 15px;
+}
+
+.staffImg img {
+  border-radius: 50%;
+}
