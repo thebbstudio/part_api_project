@@ -25,7 +25,10 @@ function Carousel({ children, initialization = {} }) {
   const divWindow = useRef();
 
   let {
-    slidesForShow, slidesForScroll, auto = false, interval = 5000,
+    slidesForShow,
+    slidesForScroll,
+    auto = false,
+    interval = 5000,
   } = initialization;
 
   let widthOfOneSlide = 100 / slidesForShow;
@@ -66,8 +69,6 @@ function Carousel({ children, initialization = {} }) {
     }
     return false;
   };
-
-  autoSlide();
 
   return (
     <div className={cl.main}>

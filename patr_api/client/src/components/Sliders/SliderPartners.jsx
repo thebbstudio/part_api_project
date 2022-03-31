@@ -11,6 +11,9 @@ function SliderPartners() {
     if (width < 1000 && width > 750) {
       return 4;
     }
+    if (width < 450) {
+      return 1;
+    }
     return 2;
   });
   const [slidesForScroll, setSlidesForScroll] = useState(1);
@@ -24,8 +27,11 @@ function SliderPartners() {
       if (width < 1000 && width > 750) {
         setSlidesForShow(4);
       }
-      if (width <= 750) {
+      if (width <= 750 && width > 450) {
         setSlidesForShow(2);
+      }
+      if (width <= 450) {
+        setSlidesForShow(1);
       }
     }, 2000);
     return () => {
