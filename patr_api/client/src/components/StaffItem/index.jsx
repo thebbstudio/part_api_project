@@ -8,7 +8,7 @@ function StaffItem() {
       <div className={cl.staffImg}>
         <img src={img} alt="" />
       </div>
-      <h3>Гилёв Евгений Андреевич</h3>
+      <p className={cl.fullName}>Гилёв Евгений Андреевич</p>
       <p>Специалист по работе с молодёжью</p>
     </div>
   );
