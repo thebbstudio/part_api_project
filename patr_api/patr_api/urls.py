@@ -24,7 +24,7 @@ from patr_api_app.views import NewsView, EventsView, AllStaffView, AllDocsView, 
 router = SimpleRouter(trailing_slash=False)
 
 router.register('patr_api/news', NewsView)
-router.register('patr_api/events/', EventsView)
+router.register('patr_api/events', EventsView)
 router.register('patr_api/allstaff', AllStaffView)
 router.register('patr_api/alldocuments', AllDocsView)
 router.register('patr_api/allpartners', AllPartnersView)
@@ -33,5 +33,12 @@ router.register('patr_api/allpark', AllParkView)
 urlpatterns = [
     path('', index),
     path('admin/', admin.site.urls),
+    path('news', index),
+    path('staff', index),
+    path('documentation', index),
+    path('events', index),
+    path('park', index),
 ]
 urlpatterns += router.urls
+
+handler404 = 'patr_api.views.index'

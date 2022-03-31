@@ -6,7 +6,7 @@ from patr_api_app.models import News, Events, Staff, Documents, Partners, Videos
 class AllNewsSerializer(ModelSerializer):
     class Meta:
         model = News
-        fields = ['title', 'description', 'img_path', 'date_publication']
+        fields = ['id','title', 'description', 'img_path', 'date_publication']
 
 
 class AllEventsSerializer(ModelSerializer):

@@ -85,12 +85,59 @@ img {
 
 .staff-item {
   width: 33.3333%;
-  margin-bottom: 70px;
+  margin-bottom: 4rem;
 }
 
 .docs-title {
-  margin: 20px 0 15px;
+  margin: 1.5rem 0 1rem;
+}
+.docs-text {
+  font-size: 1rem;
+  line-height: 2rem;
+}
+.docs-text a:hover {
+  opacity: 0.5;
 }
 .docs-ul li {
-  margin: 5px 0;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+}
+.docs-ul li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.docs-ul li a:hover {
+  opacity: 0.5;
+}
+.docs-ul li img {
+  width: 30px;
+  height: 30px;
+  margin-right: 0.3rem;
+}
+
+.parkCards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 1220px) {
+  .sliderVideo video {
+    height: auto;
+  }
+}
+@media (max-width: 1000px) {
+  .staff-item {
+    width: 50%;
+  }
+  .parkCards {
+    
+  }
+}
+@media (max-width: 750px) {
+  .staff-item {
+    width: 100%;
+  }
 }

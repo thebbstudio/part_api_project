@@ -2,19 +2,21 @@ import React from 'react';
 import propTypes from 'prop-types';
 import cl from './CardItem.module.css';
 
-function CardItem({ el }) {
+function CardItem({ element }) {
   return (
-    <div className={cl.cardItem}>
-      <div className={cl.cardImg}>
-        <img src={el.srcForImg} alt={el.alt} />
+    <div className={cl.parkCard}>
+      <div className={cl.cardItem}>
+        <div className={cl.cardImg}>
+          <img src={element.srcForImg} alt={element.alt} />
+        </div>
+        <p className={cl.title}>{element.title}</p>
       </div>
-      <p>{el.title}</p>
     </div>
   );
 }
 
 CardItem.propTypes = {
-  el: propTypes.shape({
+  element: propTypes.shape({
     title: propTypes.string.isRequired,
     srcForImg: propTypes.string.isRequired,
     alt: propTypes.string.isRequired,
