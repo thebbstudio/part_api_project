@@ -1,29 +1,43 @@
 import React from 'react';
-import img from '../../assets/img/forEvents/10.jpg';
+import PropType from 'prop-types';
+// import img from '../../assets/img/forEvents/10.jpg';
 import cl from './MiniatureEvent.module.css';
 
-function MiniatureEvent({ style }) {
+function MiniatureEvent({ style, event }) {
   return (
     <div className={cl.miniEvent} style={{ ...style }}>
       <div className={cl.img}>
-        <img src={img} alt="" />
+        <img src={event.img_path} alt="" />
       </div>
       <div className={cl.about}>
-        <h5>ПРАКТИКА И ПОЗНАНИЕ!</h5>
+        <h5>{event.title}</h5>
         <p>
-          18 января силами сотрудников Центра патриотического воспитания детей и молодёжи,
-          при участии военнослужащих войсковой части 40274, а также ветеранов боевых действий,
-          выпускников ВПК &quot;Грифон&quot; и Союза десантников были успешно организованы военные
-          учебные сборы для студентов отдела среднего профессионального образования ТИ НИЯУ МИФИ.
-          Это уже вторые учебные сборы, организованные при тесном сотрудничестве Центра
-          патриотического воспитания и МИФИ, но в 2022 году наше взаимодействие выходит на качестве
+          {event.description}
         </p>
         <p className={cl.date}>
-          <span>18 января 2022г</span>
+          <span>{event.date_publication}</span>
         </p>
       </div>
     </div>
   );
 }
+
+MiniatureEvent.defaultProps = {
+  style: {
+    maxWidth: '100%',
+  },
+};
+
+MiniatureEvent.propTypes = {
+  style: PropType.shape({ maxWidth: PropType.string }),
+  event: PropType.shape({
+    id: PropType.number.isRequired,
+    title: PropType.string.isRequired,
+    description: PropType.string.isRequired,
+    img_path: PropType.string.isRequired,
+    date_publication: PropType.string.isRequired,
+
+  }).isRequired,
+};
 
 export default MiniatureEvent;

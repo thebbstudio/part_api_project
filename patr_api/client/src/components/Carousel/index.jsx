@@ -16,6 +16,7 @@ import React, {
   useEffect,
   useRef,
 } from 'react';
+import PropType from 'prop-types';
 
 import cl from './Carousel.module.css';
 
@@ -27,8 +28,8 @@ function Carousel({ children, initialization = {} }) {
   let {
     slidesForShow,
     slidesForScroll,
-    auto = false,
-    interval = 5000,
+    // auto = false,
+    // interval = 5000,
   } = initialization;
 
   let widthOfOneSlide = 100 / slidesForShow;
@@ -63,12 +64,12 @@ function Carousel({ children, initialization = {} }) {
     });
   };
 
-  const autoSlide = () => {
-    if (auto) {
-      setInterval(handleSlideRight(), interval);
-    }
-    return false;
-  };
+  // const autoSlide = () => {
+  //   if (auto) {
+  //     setInterval(handleSlideRight(), interval);
+  //   }
+  //   return false;
+  // };
 
   return (
     <div className={cl.main}>
@@ -125,5 +126,20 @@ function Carousel({ children, initialization = {} }) {
     </div>
   );
 }
+
+Carousel.defaultProps = {
+  initialization: {
+    slidesForScroll: 1,
+    slidesForShow: 3,
+  }.isRequired,
+};
+
+Carousel.propTypes = {
+  children: PropType.node.isRequired,
+  initialization: PropType.shape({
+    slidesForShow: PropType.number.isRequired,
+    slidesForScroll: PropType.number.isRequired,
+  }),
+};
 
 export default Carousel;

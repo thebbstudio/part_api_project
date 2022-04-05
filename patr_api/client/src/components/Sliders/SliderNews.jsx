@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import PropType from 'prop-types';
 import Carousel from '../Carousel';
 import MiniatureNew from '../MiniatureNew';
 
-function SliderNews() {
+function SliderNews({ news }) {
   const [slidesForShow, setSlidesForShow] = useState(() => {
     const width = document.body.offsetWidth;
     if (width >= 1000) {
@@ -36,13 +37,22 @@ function SliderNews() {
   return (
     <div className="sliderNews">
       <Carousel initialization={{ slidesForShow, slidesForScroll }}>
-        <MiniatureNew />
-        <MiniatureNew />
-        <MiniatureNew />
-        <MiniatureNew />
+        {news.map((oneNews) => (
+          <MiniatureNew news={oneNews} key={oneNews.id} />
+        ))}
       </Carousel>
     </div>
   );
 }
+
+SliderNews.propTypes = {
+  news: PropType.arrayOf(PropType.shape({
+    id: PropType.number.isRequired,
+    title: PropType.string.isRequired,
+    description: PropType.string.isRequired,
+    img_path: PropType.string.isRequired,
+    date_publication: PropType.string.isRequired,
+  })).isRequired,
+};
 
 export default SliderNews;
