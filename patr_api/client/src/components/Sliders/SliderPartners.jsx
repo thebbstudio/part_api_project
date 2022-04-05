@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import PropType from 'prop-types';
 import Carousel from '../Carousel';
 import MiniaturePartner from '../MiniaturePartner';
 
-function SliderPartners() {
+function SliderPartners({ partners }) {
   const [slidesForShow, setSlidesForShow] = useState(() => {
     const width = document.body.offsetWidth;
     if (width >= 1000) {
@@ -42,15 +43,21 @@ function SliderPartners() {
   return (
     <div className="sliderPartners">
       <Carousel initialization={{ slidesForShow, slidesForScroll }}>
-        <MiniaturePartner />
-        <MiniaturePartner />
-        <MiniaturePartner />
-        <MiniaturePartner />
-        <MiniaturePartner />
-        <MiniaturePartner />
+        {partners.map((onePartner) => (
+          <MiniaturePartner partner={onePartner} key={onePartner.id} />
+        )) }
       </Carousel>
     </div>
   );
 }
+
+SliderPartners.propTypes = {
+  partners: PropType.arrayOf(PropType.shape({
+    id: PropType.number.isRequired,
+    title: PropType.string.isRequired,
+    img_path: PropType.string.isRequired,
+    href_string: PropType.string.isRequired,
+  })).isRequired,
+};
 
 export default SliderPartners;
