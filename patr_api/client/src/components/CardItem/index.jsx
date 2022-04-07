@@ -1,25 +1,33 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import cl from './CardItem.module.css';
 
-function CardItem({ element }) {
+function CardItem({ card }) {
   return (
     <div className={cl.parkCard}>
-      <div className={cl.cardItem}>
-        <div className={cl.cardImg}>
-          <img src={element.srcForImg} alt={element.alt} />
+      <Link to={card.url}>
+        <div className={`${cl.cardItem}`}>
+          <div className={cl.cardImg}>
+            <img src={card.img_path} alt={card.title} />
+          </div>
+          <p className={cl.title}>{card.title}</p>
         </div>
-        <p className={cl.title}>{element.title}</p>
-      </div>
+      </Link>
     </div>
   );
 }
 
+CardItem.defaultProps = {
+  // card.url: ''
+};
+
 CardItem.propTypes = {
-  element: propTypes.shape({
-    title: propTypes.string.isRequired,
-    srcForImg: propTypes.string.isRequired,
-    alt: propTypes.string.isRequired,
+  card: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    url: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    img_path: PropTypes.string.isRequired,
   }).isRequired,
 };
 

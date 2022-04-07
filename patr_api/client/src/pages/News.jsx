@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import PostItem from '../components/PostItem';
-import PostService from '../http/PostService';
+import HttpService from '../http/HttpService';
 
 function News() {
   const [news, setNews] = useState([]);
 
   const getNews = async () => {
-    const allNews = await PostService.getAll('http://127.0.0.1:8000/patr_api/news?format=json');
+    const allNews = await HttpService.getNews({ format: 'json' });
     setNews(allNews.data);
+    // console.log(allNews.data);
   };
 
   useEffect(() => {
