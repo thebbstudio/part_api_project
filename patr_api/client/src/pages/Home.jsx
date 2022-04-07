@@ -4,7 +4,7 @@ import SliderEvents from '../components/Sliders/SliderEvents';
 import SliderNews from '../components/Sliders/SliderNews';
 import SliderPartners from '../components/Sliders/SliderPartners';
 import SliderVideo from '../components/Sliders/SliderVideo';
-import PostService from '../http/PostService';
+import HttpService from '../http/HttpService';
 
 function Home() {
   const [news, setNews] = useState([]);
@@ -12,17 +12,17 @@ function Home() {
   const [partners, setPartners] = useState([]);
 
   const getNews = async () => {
-    const allNews = await PostService.getAll('http://127.0.0.1:8000/patr_api/news?format=json');
+    const allNews = await HttpService.getNews({ format: 'json' });
     setNews(allNews.data);
     // console.log(allNews.data);
   };
   const getEvents = async () => {
-    const allEvents = await PostService.getAll('http://127.0.0.1:8000/patr_api/events/?format=json');
+    const allEvents = await HttpService.getEvents({ format: 'json' });
     setEvents(allEvents.data);
     // console.log(allEvents.data);
   };
   const getPartners = async () => {
-    const allPartners = await PostService.getAll('http://127.0.0.1:8000/patr_api/allpartners?format=json');
+    const allPartners = await HttpService.getPartners({ format: 'json' });
     setPartners(allPartners.data);
     // console.log(allPartners.data);
   };

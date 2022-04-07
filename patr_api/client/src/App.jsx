@@ -22,7 +22,9 @@ function App() {
         <Route path="news" element={<News />} />
         <Route path="staff" element={<Staff />} />
         <Route path="documentation" element={<Documentation />} />
-        <Route path="park" element={<Park />} />
+        <Route path="park" element={<Park />}>
+          <Route path=":type" element={<Home />} />
+        </Route>
         <Route path="events" element={<Events />} />
       </Route>
       <Route path="*" element={<ErrorPageNotFound />} />

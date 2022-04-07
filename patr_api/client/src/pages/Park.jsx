@@ -1,55 +1,63 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import CardItem from '../components/CardItem';
-import PostService from '../http/PostService';
+import HttpService from '../http/HttpService';
+
+/*
+    TODO: Доделать АПИ
+*/
 
 function Park() {
-  const [categorySelect, setCategorySelect] = useState(0);
-  const [categoryCard, setCategoryCard] = useState([
+  const params = useParams();
+  const categoryCard = [
     {
       id: 1,
-      title: 'some title 1some title 1some title 1some title 1',
+      url: 'park',
+      title: 'Постоянная экспозиция военной техники',
       img_path: 'http://localhost:3000/img/park/1.jpg',
     },
     {
       id: 2,
-      title: 'some title 1some title 1some title 1some title 1',
+      url: 'workout',
+      title: 'Воркаут площадка',
       img_path: 'http://localhost:3000/img/park/1.jpg',
     },
     {
       id: 3,
-      title: 'some title 1some title 1some title 1some title 1',
+      url: 'pdd',
+      title: 'Площадка ПДД',
       img_path: 'http://localhost:3000/img/park/1.jpg',
     },
-  ]);
+  ];
 
   const [cards, setCards] = useState([]);
 
-  const getCards = async () => {
-    const allCards = await PostService.getAll('http://127.0.0.1:8000/patr_api/allstaff?format=json');
+  const getCards = async (format = 'json') => {
+    const allCards = await HttpService.getCards({ format });
+    console.log(allCards.data);
     setCards([]);
     setCards(allCards.data);
   };
 
-  useEffect(() => {
-    getCards();
-  }, []);
+  const getCards2 = () => {
+    setCards(categoryCard);
+  };
 
-  if (categorySelect !== 0) {
-    return (
-      <div className="container">
-        <h1 className="title">Парк</h1>
-        <div className="parkCards">
-          {categoryCard.map((element) => <CardItem element={element} key={element.id} />)}
-        </div>
-      </div>
-    );
-  }
+  useEffect(() => {
+    getCards2();
+
+    // getCards();
+
+    console.log(params);
+  }, [params]);
 
   return (
     <div className="container">
       <h1 className="title">Парк</h1>
       <div className="parkCards">
-        {cards.map((element) => <CardItem element={element} key={element.title} />)}
+        {cards.map((element) => (
+          <CardItem card={element} key={element.id} />
+        ))}
       </div>
     </div>
   );
