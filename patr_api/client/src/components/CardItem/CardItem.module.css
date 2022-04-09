@@ -27,8 +27,12 @@
 .cardItem:hover {
   transform: scale(1.05);
 }
+.cardItem:active {
+  transform: scale(1.03);
+}
 
 .title {
+  color: #000;
   font-family: semiFont;
   font-size: 1rem;
 }

@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+MIDDLEWARE.append('middleware.dev_cors_middleware')
 
 ROOT_URLCONF = 'patr_api.urls'
 
