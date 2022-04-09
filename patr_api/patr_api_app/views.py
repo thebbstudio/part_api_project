@@ -5,6 +5,9 @@ from rest_framework.viewsets import ModelViewSet
 from patr_api_app.serializers import AllNewsSerializer, AllStaffSerializer, AllEventsSerializer, AllDocsSerializer, \
     AllPartnersSerializer, AllVideosSerializer, AllParkSerializer
 
+from rest_framework.decorators import api_view, renderer_classes
+from rest_framework.renderers import JSONRenderer
+
 from .models import News, Events, Staff, Partners, Documents, Videos, Park
 
 
@@ -12,7 +15,7 @@ from .models import News, Events, Staff, Partners, Documents, Videos, Park
 
 
 class NewsView(ModelViewSet):
-    queryset = News.objects.all()
+    queryset = News.objects.filter(pk__gte=News.objects.count() - int(30)+1).order_by('-date_publication')
     serializer_class = AllNewsSerializer
 
     @action(methods=['get'], detail=True)
@@ -30,8 +33,18 @@ class NewsView(ModelViewSet):
         return Response(d)
 
 
+    @action(methods=['get'], detail=False)
+    def nextnews(self, request):
+        news = News.objects.filter(pk__gte=int(request.GET['start']) - int(request.GET['num'])+1).order_by('-date_publication')
+        d = {}
+        for _ in news:
+            d.update({_.pk: {'title': _.title, 'desc': _.description, 'img_path': _.img_path, 'date_publication': _.date_publication}})
+        return Response(d)
+
+
+
 class EventsView(ModelViewSet):
-    queryset = Events.objects.all()
+    queryset = Events.objects.filter(pk__gte=Events.objects.count() - int(30)+1).order_by('-date_publication')
     serializer_class = AllEventsSerializer
 
 

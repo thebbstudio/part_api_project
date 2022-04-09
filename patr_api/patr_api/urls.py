@@ -1,5 +1,4 @@
 """patr_api URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
@@ -14,24 +13,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from rest_framework.routers import SimpleRouter
-
+from django.conf.urls.static import static
+from django.conf import settings
 from patr_api_app.models import News
 from patr_api_app.views import NewsView, EventsView, AllStaffView, AllDocsView, AllPartnersView, AllVideosView, \
     AllParkView, index
 
 router = SimpleRouter(trailing_slash=False)
 
-router.register('patr_api/news', NewsView)
-router.register('patr_api/events/', EventsView)
-router.register('patr_api/allstaff', AllStaffView)
-router.register('patr_api/alldocuments', AllDocsView)
-router.register('patr_api/allpartners', AllPartnersView)
-router.register('patr_api/allvideos', AllVideosView)
-router.register('patr_api/allpark', AllParkView)
+#router.register('patr_api/', include('patr_api_app.urls'))
+
 urlpatterns = [
     path('', index),
     path('admin/', admin.site.urls),
+    path('patr_api/', include('patr_api_app.urls'))
 ]
 urlpatterns += router.urls
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
