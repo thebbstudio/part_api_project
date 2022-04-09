@@ -30,6 +30,7 @@ router.register('patr_api/alldocuments', AllDocsView)
 router.register('patr_api/allpartners', AllPartnersView)
 router.register('patr_api/allvideos', AllVideosView)
 router.register('patr_api/allpark', AllParkView)
+
 urlpatterns = [
     path('', index),
     path('admin/', admin.site.urls),
