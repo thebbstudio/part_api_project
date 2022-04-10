@@ -29,7 +29,7 @@ class NewsView(ModelViewSet):
         news = News.objects.filter(pk__gte=News.objects.count() - int(pk)+1).order_by('-date_publication')
         d = {}
         for _ in news:
-            d.update({_.pk: {'title': _.title, 'desc': _.description, 'img_path': _.img_path, 'date_publication': _.date_publication}})
+            d.update({_.pk: {'title': _.title, 'desc': _.description, 'img_path': _.img_path.url, 'date_publication': _.date_publication}})
         return Response(d)
 
 
@@ -38,7 +38,7 @@ class NewsView(ModelViewSet):
         news = News.objects.filter(pk__gte=int(request.GET['start']) - int(request.GET['num'])+1).order_by('-date_publication')
         d = {}
         for _ in news:
-            d.update({_.pk: {'title': _.title, 'desc': _.description, 'img_path': _.img_path, 'date_publication': _.date_publication}})
+            d.update({_.pk: {'title': _.title, 'desc': _.description, 'img_path': _.img_path.url, 'date_publication': _.date_publication}})
         return Response(d)
 
 
@@ -51,14 +51,15 @@ class EventsView(ModelViewSet):
     @action(methods=['get'], detail=True)
     def eventdetail(self, request, pk):
         events = Events.objects.get(pk=pk)
-        return Response({'title': events.title, 'desc': events.description, 'img_path': events.img_path})
+        return Response({'title': events.title, 'desc': events.description, 'img_path': events.img_path.url})
 
     @action(methods=['get'], detail=True)
     def someevents(self, request, pk):
-        events = Events.objects.filter(pk__gte=Events.objects.count() - int(pk)+1).order_by('-date_publication')
+        events = Events.objects.filter(pk__gte=Events.objects.count() - int(pk)).order_by('-date_publication')
         d = {}
         for _ in events:
-            d.update({_.pk: {'title': _.title, 'short_text': _.short_text,'desc': _.description, 'img_path': _.img_path, 'date_publication': _.date_publication}})
+            d.update({_.pk: {'title': _.title, 'short_text': _.short_text,'desc': _.description, 'img_path': _.img_path.url, 'date_publication': _.date_publication}})
+        print(d)
         return Response(d)
 
 
