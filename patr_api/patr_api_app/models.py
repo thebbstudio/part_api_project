@@ -1,4 +1,6 @@
+from distutils.command.upload import upload
 from django.db import models
+from datetime import date
 # news
 # events
 # documents
@@ -12,7 +14,7 @@ from django.db import models
 class News(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    img_path = models.ImageField()
+    img_path = models.ImageField(upload_to=('img/news/' + str(date.today())))
     date_publication = models.DateTimeField()
     education_departament = models.BooleanField(default=False)
     is_slider = models.BooleanField(default=False)
@@ -21,7 +23,7 @@ class News(models.Model):
 
 class Events(models.Model):
     title = models.CharField(max_length=100)
-    img_path = models.ImageField()
+    img_path = models.ImageField(upload_to=('img/event/' + str(date.today())))
     description = models.TextField()
     date_publication = models.DateTimeField()
     short_text = models.CharField(max_length=500)
@@ -31,7 +33,7 @@ class Events(models.Model):
 
 class Documents(models.Model):
     title = models.CharField(max_length=150)
-    href_string = models.CharField(max_length=255)
+    href_string = models.FileField(upload_to='docs/')
     category = models.CharField(max_length=50)
 
 
@@ -42,7 +44,7 @@ class DocType(models.Model):
 
 class Staff (models.Model):
     full_name = models.CharField(max_length=150)
-    img_path = models.ImageField()
+    img_path = models.ImageField(upload_to='img/staff/')
     href_string = models.CharField(max_length=255)
     position = models.CharField(max_length=150)
     importance = models.IntegerField()
@@ -51,18 +53,18 @@ class Staff (models.Model):
 class Partners (models.Model):
     img_path = models.ImageField()
     title = models.CharField(max_length=100)
-    href_string = models.CharField(max_length=100)
+    href_string = models.ImageField(upload_to='img/partners/')
 
 
 class Videos(models.Model):
     img_path = models.ImageField()
-    href_string = models.FileField(max_length=200)
+    href_string = models.FileField(upload_to='video/')
     date_publication = models.DateTimeField()
 
 
 class Park(models.Model):
     title = models.CharField(max_length=100)
-    img_path = models.ImageField()
+    img_path = models.ImageField(upload_to='img/park/')
     park_info = models.CharField(max_length=100)
     importance = models.IntegerField()
     category_id = models.IntegerField()
@@ -72,7 +74,8 @@ class Park(models.Model):
 
 class ParkCategories(models.Model):
     title = models.CharField(max_length=100)
-    img_path = models.ImageField()
+    url = models.CharField(max_length=250)
+    img_path = models.ImageField('img/park/categories/')
 
 
 

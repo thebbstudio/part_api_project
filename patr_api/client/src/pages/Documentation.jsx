@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import doc from '../assets/img/doc.svg';
+import HttpService from '../http/HttpService';
 
 function Documentation() {
+  const [docs, setDocs] = useState([]);
+
+  const getDocs = async () => {
+    const allDocs = await HttpService.getDocs({ format: 'json' });
+    console.log(allDocs.data);
+  };
+  useEffect(() => {
+    getDocs();
+  }, []);
   return (
     <div className="container">
       <h1 className="title">Документы</h1>
