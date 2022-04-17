@@ -69,12 +69,12 @@ class Park(models.Model):
     importance = models.IntegerField()
     category_id = models.IntegerField()
     is_slider = models.BooleanField(default=False)
-    img_paths = models.ImageField()
+    img_paths = models.ImageField(upload_to='img/park/', default='default.jpg')
 
 
 class ParkCategories(models.Model):
     title = models.CharField(max_length=100)
-    url = models.CharField(max_length=250)
+    url = models.CharField(max_length=250, default='')
     img_path = models.ImageField('img/park/categories/')
 
 

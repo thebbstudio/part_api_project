@@ -1,45 +1,52 @@
 from rest_framework.serializers import ModelSerializer
 
-from patr_api_app.models import News, Events, Staff, Documents, Partners, Videos, Park
+from patr_api_app.models import *
 
 
-class AllNewsSerializer(ModelSerializer):
+class NewsSerializer(ModelSerializer):
     class Meta:
         model = News
         fields = ['id', 'title', 'description', 'img_path', 'date_publication']
 
 
-class AllEventsSerializer(ModelSerializer):
+class EventsSerializer(ModelSerializer):
     class Meta:
         model = Events
         fields = ['id', 'title', 'description', 'img_path', 'date_publication']
 
 
-class AllStaffSerializer(ModelSerializer):
+class StaffSerializer(ModelSerializer):
     class Meta:
         model = Staff
         fields = ['id', 'full_name', 'img_path', 'position']
 
 
-class AllDocsSerializer(ModelSerializer):
+class DocsSerializer(ModelSerializer):
     class Meta:
         model = Documents
         fields = ['id', 'title', 'href_string', 'category']
 
 
-class AllPartnersSerializer(ModelSerializer):
+class PartnersSerializer(ModelSerializer):
     class Meta:
         model = Partners
         fields = ['id', 'img_path', 'title', 'href_string']
 
 
-class AllVideosSerializer(ModelSerializer):
+class VideosSerializer(ModelSerializer):
     class Meta:
         model = Videos
         fields = ['id', 'img_path', 'href_string', 'date_publication']
 
-
-class AllParkSerializer(ModelSerializer):
+ParkCategories
+class ParkSerializer(ModelSerializer):
     class Meta:
         model = Park
         fields = ['id', 'title', 'img_path', 'park_info', 'importance', 'category_id', 'is_slider'] #'img_paths'
+
+
+class ParkCategoriesSerializer(ModelSerializer):
+    class Meta:
+        model = ParkCategories
+        fields = ['id', 'title', 'url', 'img_path'] #'img_paths'
+
