@@ -18,8 +18,7 @@ from rest_framework.routers import SimpleRouter
 from django.conf.urls.static import static
 from django.conf import settings
 from patr_api_app.models import News
-from patr_api_app.views import NewsView, EventsView, AllStaffView, AllDocsView, AllPartnersView, AllVideosView, \
-    AllParkView, index
+from patr_api_app.views import *
 
 router = SimpleRouter(trailing_slash=False)
 

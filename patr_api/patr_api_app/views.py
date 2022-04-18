@@ -2,13 +2,12 @@ from django.shortcuts import render
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-from patr_api_app.serializers import AllNewsSerializer, AllStaffSerializer, AllEventsSerializer, AllDocsSerializer, \
-    AllPartnersSerializer, AllVideosSerializer, AllParkSerializer
+from patr_api_app.serializers import *
 
 from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.renderers import JSONRenderer
 
-from .models import News, Events, Staff, Partners, Documents, Videos, Park
+from .models import *
 
 
 #someevent, eventdetail,
@@ -16,7 +15,7 @@ from .models import News, Events, Staff, Partners, Documents, Videos, Park
 
 class NewsView(ModelViewSet):
     queryset = News.objects.filter(pk__gte=News.objects.count() - int(30)+1).order_by('-date_publication')
-    serializer_class = AllNewsSerializer
+    serializer_class = NewsSerializer
 
     @action(methods=['get'], detail=True)
     def newsdetail(self, request, pk):
@@ -45,7 +44,7 @@ class NewsView(ModelViewSet):
 
 class EventsView(ModelViewSet):
     queryset = Events.objects.filter(pk__gte=Events.objects.count() - int(30)+1).order_by('-date_publication')
-    serializer_class = AllEventsSerializer
+    serializer_class = EventsSerializer
 
 
     @action(methods=['get'], detail=True)
@@ -64,29 +63,34 @@ class EventsView(ModelViewSet):
 
 
 
-class AllStaffView(ModelViewSet):
+class StaffView(ModelViewSet):
     queryset = Staff.objects.all()
-    serializer_class = AllStaffSerializer
+    serializer_class = StaffSerializer
 
 
-class AllDocsView(ModelViewSet): #documents или docsType в models
+class DocsView(ModelViewSet): #documents или docsType в models
     queryset = Documents.objects.all()
-    serializer_class = AllDocsSerializer
+    serializer_class = DocsSerializer
 
 
-class AllPartnersView(ModelViewSet):
+class PartnersView(ModelViewSet):
     queryset = Partners.objects.all()
-    serializer_class = AllPartnersSerializer
+    serializer_class = PartnersSerializer
 
 
-class AllVideosView(ModelViewSet):
+class VideosView(ModelViewSet):
     queryset = Videos.objects.all()
-    serializer_class = AllVideosSerializer
+    serializer_class = VideosSerializer
 
 
-class AllParkView(ModelViewSet):
+class ParkView(ModelViewSet):
     queryset = Park.objects.all()
-    serializer_class = AllParkSerializer
+    serializer_class = ParkSerializer
+
+
+class ParkView(ModelViewSet):
+    queryset = ParkCategories.objects.all()
+    serializer_class = ParkCategoriesSerializer
 
 
 def index(request):

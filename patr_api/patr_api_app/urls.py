@@ -7,11 +7,12 @@ router = SimpleRouter(trailing_slash=False)
 
 router.register('news', NewsView)
 router.register('events', EventsView)
-router.register('allstaff', AllStaffView)
-router.register('alldocuments', AllDocsView)
-router.register('allpartners', AllPartnersView)
-router.register('allvideos', AllVideosView)
-router.register('allpark', AllParkView)
+router.register('staff', StaffView)
+router.register('documents', DocsView)
+router.register('partners', PartnersView)
+router.register('videos', VideosView)
+router.register('park', ParkView)
+router.register('parkcategories', ParkView)
 
 urlpatterns = [
     #expath('news/nextnews', nextnews)
