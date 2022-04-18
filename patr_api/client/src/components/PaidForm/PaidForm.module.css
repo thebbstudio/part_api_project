@@ -1,0 +1,55 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.small {
+  font-size: 0.8rem;
+  color: grey;
+  margin-top: 5px;
+}
+
+.select {
+  max-width: 200px;
+  height: 30px;
+  margin-top: 5px;
+}
+.input {
+  height: 30px;
+  margin-top: 5px;
+}
+.inputL {
+  width: 300px;
+}
+.inputM {
+  width: 200px;
+}
+.inputS {
+  width: 150px;
+}
+.inputVS {
+  width: 60px;
+}
+.disabled {
+  opacity: 0.6;
+}
+.form-btn {
+  margin-top: 2rem;
+  border: 1px solid #fff;
+  padding: 7px 10px;
+  font-size: 1rem;
+  font-family: 'Montserrat';
+  color: white;
+  cursor: pointer;
+  background-color: #378b73;
+  transition: all 0.2s;
+}
+.form-btn:hover {
+  border: 1px solid #378b73;
+  color: #378b73;
+  background-color: #fff;
+}
+.form-btn:active {
+  transform: scale(0.99);
+}

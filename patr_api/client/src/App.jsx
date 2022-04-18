@@ -7,6 +7,7 @@ import Events from './pages/Events';
 import Home from './pages/Home';
 import MainPage from './pages/MainPage';
 import News from './pages/News';
+import PaidServices from './pages/PaidServices';
 import Park from './pages/Park';
 import Staff from './pages/Staff';
 
@@ -20,6 +21,7 @@ function App() {
       <Route path="/" element={<MainPage />}>
         <Route index element={<Home />} />
         <Route path="news" element={<News />} />
+        <Route path="paidservices" element={<PaidServices />} />
         <Route path="staff" element={<Staff />} />
         <Route path="documentation" element={<Documentation />} />
         <Route path="park" element={<Park />}>
