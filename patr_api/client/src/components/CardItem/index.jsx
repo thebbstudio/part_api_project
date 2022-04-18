@@ -6,7 +6,7 @@ import cl from './CardItem.module.css';
 function CardItem({ card }) {
   return (
     <div className={cl.parkCard}>
-      <Link to={card.url}>
+      <Link to={card.id.toString()}>
         <div className={`${cl.cardItem}`}>
           <div className={cl.cardImg}>
             <img src={card.img_path} alt={card.title} />
