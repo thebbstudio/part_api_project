@@ -3,51 +3,22 @@ import { useParams } from 'react-router-dom';
 import CardItem from '../components/CardItem';
 import HttpService from '../http/HttpService';
 
-/*
-    TODO: Доделать АПИ
-*/
-
 function Park() {
   const params = useParams();
-  const categoryCard = [
-    {
-      id: 1,
-      url: 'park',
-      title: 'Постоянная экспозиция военной техники',
-      img_path: 'http://localhost:3000/img/park/1.jpg',
-    },
-    {
-      id: 2,
-      url: 'workout',
-      title: 'Воркаут площадка',
-      img_path: 'http://localhost:3000/img/park/1.jpg',
-    },
-    {
-      id: 3,
-      url: 'pdd',
-      title: 'Площадка ПДД',
-      img_path: 'http://localhost:3000/img/park/1.jpg',
-    },
-  ];
-
   const [cards, setCards] = useState([]);
 
-  const getCards = async (format = 'json') => {
-    const allCards = await HttpService.getCards({ format });
+  const getCards = async (format = 'json', type = params.type ? params.type : '') => {
+    const allCards = await HttpService.getCards({
+      format,
+      type,
+    });
     console.log(allCards.data);
     setCards([]);
     setCards(allCards.data);
   };
 
-  const getCards2 = () => {
-    setCards(categoryCard);
-  };
-
   useEffect(() => {
-    getCards2();
-
-    // getCards();
-
+    getCards();
     console.log(params);
   }, [params]);
 
