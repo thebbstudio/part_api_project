@@ -29,12 +29,12 @@
   width: 150px;
 }
 .inputVS {
-  width: 60px;
+  width: 120px;
 }
 .disabled {
   opacity: 0.6;
 }
-.form-btn {
+.btn {
   margin-top: 2rem;
   border: 1px solid #fff;
   padding: 7px 10px;
@@ -45,11 +45,11 @@
   background-color: #378b73;
   transition: all 0.2s;
 }
-.form-btn:hover {
+.btn:hover {
   border: 1px solid #378b73;
   color: #378b73;
   background-color: #fff;
 }
-.form-btn:active {
+.btn:active {
   transform: scale(0.99);
 }

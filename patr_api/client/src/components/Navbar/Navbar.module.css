@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   background: linear-gradient(to top, #378b73, #2C6F5C);
-  z-index: 9999;
+  z-index: 1000;
 }
 .list {
   width: 100%;
