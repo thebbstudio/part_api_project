@@ -26,13 +26,14 @@ function Documentation() {
   return (
     <div className="container">
       <h1 className="title">Документы</h1>
-      {docs.map((el) => (
-        <section>
+      {docs.map((el, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <section key={index}>
           <h5 className="docs-title">{el[0].category}</h5>
           <ul className="docs-ul">
             {el.map((elem) => (
-              <li>
-                <a href={elem.href_string}>
+              <li key={elem.id}>
+                <a href={elem.href_string} target="_blank" rel="noreferrer">
                   <img src={doc} alt="doc" />
                   {elem.title}
                 </a>
