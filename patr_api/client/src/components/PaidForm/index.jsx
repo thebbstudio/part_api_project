@@ -43,7 +43,6 @@ function PaidForm() {
         <div className={cl.block}>
           <label htmlFor="timeEvent">Начало в:</label>
           <input
-            onChange="checkTime()"
             className={`${cl.input} ${cl.inputVS}`}
             type="time"
             name="timeEvent"
@@ -58,7 +57,7 @@ function PaidForm() {
         <div className={cl.block} style={{ marginLeft: '2rem' }}>
           <label htmlFor="duration">Продолжительность</label>
           <select id="duration-list" className={`${cl.select} ${cl.inputVS}`}>
-            <option value="1 час" selected>1 час</option>
+            <option defaultValue="1 час">1 час</option>
             <option value="2 часа">2 часа</option>
             <option value="3 часа">3 часа</option>
             <option value="4 часа">4 часа</option>
@@ -100,16 +99,16 @@ function PaidForm() {
         </div>
       </div>
 
-      <div>
+      <div className={cl.blockCheckbox}>
         <input type="checkbox" name="rules" id="rules" required />
-        <label htmlFor="rules">
+        <label htmlFor="rules" style={{ marginLeft: '1rem' }}>
           <a className="ref" href="">С правилами ВТИ МБУ ЦПВДМ ознакомлен</a>
         </label>
       </div>
 
-      <div>
+      <div className={cl.blockCheckbox}>
         <input type="checkbox" name="dataProcessing" id="dataProcessing" required />
-        <label htmlFor="dataProcessing">Согласен на обработку персональных данных</label>
+        <label htmlFor="dataProcessing" style={{ marginLeft: '1rem' }}>Согласен на обработку персональных данных</label>
       </div>
 
       <div>

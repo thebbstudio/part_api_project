@@ -15,7 +15,7 @@ function Modal({ children, title }) {
             <a href="#close" title="Close" className={cl.close}>×</a>
           </div>
           <div className={cl.modalBody}>
-            <p>{children}</p>
+            {children}
           </div>
         </div>
       </div>
