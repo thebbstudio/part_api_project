@@ -12,14 +12,12 @@ function Park() {
       format,
       type,
     });
-    console.log(allCards.data);
     setCards([]);
     setCards(allCards.data);
   };
 
   useEffect(() => {
     getCards();
-    console.log(params);
   }, [params]);
 
   return (

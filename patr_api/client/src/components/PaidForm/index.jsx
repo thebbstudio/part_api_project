@@ -4,25 +4,10 @@ import cl from './PaidForm.module.css';
 function PaidForm() {
   return (
     <form id="form" action="https://patriotlesnoy.ru/api/paidservice.php" method="POST">
-
-      <div className={cl.block}>
-        <label htmlFor="typePaid">Выберите услугу:</label>
-        <select
-          className={cl.select}
-          onChange="typePaidService()"
-          name="typePaid"
-          id="typePaid"
-          required
-        >
-          <option value="пеинтбол" selected>пеинтбол</option>
-          <option value="аренда полигона">аренда полигона</option>
-        </select>
-      </div>
-
       <div className={cl.block}>
         <label htmlFor="fullName">Имя и отчество:</label>
         <input
-          className={`${cl.input} ${cl.inputL}`}
+          className={`${cl.input} ${cl.inputM}`}
           type="text"
           name="fullName"
           id="fullName"
@@ -34,7 +19,7 @@ function PaidForm() {
       <div className={cl.block}>
         <label htmlFor="phone">Телефон:</label>
         <input
-          className="input-m"
+          className={`${cl.input} ${cl.inputM}`}
           type="tel"
           name="phone"
           id="phone"
@@ -46,7 +31,7 @@ function PaidForm() {
       <div className={cl.block}>
         <label htmlFor="dateEvent">Выберите дату:</label>
         <input
-          className="input-s"
+          className={`${cl.input} ${cl.inputS}`}
           type="date"
           name="dateEvent"
           id="dateEvent"
@@ -59,7 +44,7 @@ function PaidForm() {
           <label htmlFor="timeEvent">Начало в:</label>
           <input
             onChange="checkTime()"
-            className="input-s"
+            className={`${cl.input} ${cl.inputVS}`}
             type="time"
             name="timeEvent"
             id="timeEvent"
@@ -70,19 +55,15 @@ function PaidForm() {
           <small className={cl.small}>с 09:00 до 18:00</small>
         </div>
 
-        <div className={cl.block}>
-          <label htmlFor="timeEvent">Продолжительность</label>
-          <input
-            className="input-s"
-            type="time"
-            name="timeEvent"
-            id="timeEvent"
-            value="01:00"
-            min="01:00"
-            max="04:00"
-            required
-          />
-          <small className={cl.small}>от 1 часа до 4-х часов</small>
+        <div className={cl.block} style={{ marginLeft: '2rem' }}>
+          <label htmlFor="duration">Продолжительность</label>
+          <select id="duration-list" className={`${cl.select} ${cl.inputVS}`}>
+            <option value="1 час" selected>1 час</option>
+            <option value="2 часа">2 часа</option>
+            <option value="3 часа">3 часа</option>
+            <option value="4 часа">4 часа</option>
+          </select>
+          <small className={cl.small}>от 1 до 4 часов</small>
         </div>
       </div>
 
@@ -90,7 +71,7 @@ function PaidForm() {
         <label htmlFor="number-of-participants">Количество участников:</label>
         <input
           placeholder="Введите кол-во"
-          className="input-s"
+          className={`${cl.input} ${cl.inputVS}`}
           type="number"
           name="numberOfParticipants"
           id="numberOfParticipants"
@@ -132,7 +113,7 @@ function PaidForm() {
       </div>
 
       <div>
-        <button className="form-btn" type="submit">Отправить заявку</button>
+        <button className={cl.btn} type="submit">Отправить заявку</button>
       </div>
     </form>
   );

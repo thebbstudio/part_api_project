@@ -5,44 +5,42 @@ import HttpService from '../http/HttpService';
 function Documentation() {
   const [docs, setDocs] = useState([]);
 
+  const sortDocs = (allDocs) => {
+    const categories = allDocs.map((el) => el.category);
+    const exclusiveCategories = new Set([...categories]);
+    const allSortedDocs = [];
+    exclusiveCategories.forEach((el) => {
+      allSortedDocs.push(allDocs.filter((elem) => elem.category === el));
+    });
+    setDocs(allSortedDocs);
+  };
   const getDocs = async () => {
     const allDocs = await HttpService.getDocs({ format: 'json' });
-    console.log(allDocs.data);
+    sortDocs(allDocs.data);
   };
+
   useEffect(() => {
     getDocs();
+    sortDocs(docs);
   }, []);
   return (
     <div className="container">
       <h1 className="title">Документы</h1>
-      <h5 className="docs-title">Финансово-хозяйственная деятельность</h5>
-      <ul className="docs-ul">
-        <li>
-          <a href="#">
-            <img src={doc} alt="doc" />
-            Какое-то название документа
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img src={doc} alt="doc" />
-            Какое-то название документа
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img src={doc} alt="doc" />
-            Какое-то название документа
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img src={doc} alt="doc" />
-            Какое-то название документа
-          </a>
-        </li>
-      </ul>
-
+      {docs.map((el) => (
+        <section>
+          <h5 className="docs-title">{el[0].category}</h5>
+          <ul className="docs-ul">
+            {el.map((elem) => (
+              <li>
+                <a href={elem.href_string}>
+                  <img src={doc} alt="doc" />
+                  {elem.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
       <h5 className="docs-title">Противодействие коррупции</h5>
       <p className="docs-text">
         Уважаемые граждане! Если вам стало известно о фактах проявления коррупции, Вы можете:
