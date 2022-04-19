@@ -28,24 +28,14 @@ function Carousel({ children, initialization = {} }) {
   let {
     slidesForShow,
     slidesForScroll,
-    // auto = false,
-    // interval = 5000,
+    auto = false,
+    interval = 5000,
   } = initialization;
 
   let widthOfOneSlide = 100 / slidesForShow;
   let widthOfSlidesForScrolling = widthOfOneSlide * slidesForScroll;
   let maxWidth = widthOfOneSlide * pages.length;
   let [startPosition, endPosition] = [0, -maxWidth + 100];
-
-  useEffect(() => {
-    setPages(Children.map(children, (el) => cloneElement(el, {
-      style: {
-        height: '100%',
-        minWidth: `${widthOfOneSlide}%`,
-        maxWidth: `${widthOfOneSlide}%`,
-      },
-    })));
-  }, [initialization]);
 
   const handleSlideLeft = () => {
     setOffset((currentOffset) => {
@@ -64,12 +54,19 @@ function Carousel({ children, initialization = {} }) {
     });
   };
 
-  // const autoSlide = () => {
-  //   if (auto) {
-  //     setInterval(handleSlideRight(), interval);
-  //   }
-  //   return false;
-  // };
+  useEffect(() => {
+    setPages(Children.map(children, (el) => cloneElement(el, {
+      style: {
+        minWidth: `${widthOfOneSlide}%`,
+        maxWidth: `${widthOfOneSlide}%`,
+      },
+    })));
+    const oneElement = children.filter((el) => el.type === 'video');
+    console.log(oneElement);
+
+    let autoSlide = auto ? setInterval(handleSlideRight, interval) : undefined;
+    return () => clearInterval(autoSlide);
+  }, [initialization]);
 
   return (
     <div className={cl.main}>

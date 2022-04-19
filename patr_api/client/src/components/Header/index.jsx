@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import cl from './Header.module.css';
-import logo from '../../assets/img/logov2.png';
+import logo from '../../assets/img/logo.png';
 import WorkSchedules from './WorkSchedules';
 import Contacts from './Contacts';
 
