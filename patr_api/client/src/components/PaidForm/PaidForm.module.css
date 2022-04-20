@@ -45,13 +45,13 @@
   font-family: 'Montserrat';
   color: white;
   cursor: pointer;
-  background-color: #378b73;
+  background: linear-gradient(to bottom left, #2C6F5C, #378b73);
   transition: all 0.2s;
 }
 .btn:hover {
   border: 1px solid #378b73;
   color: #378b73;
-  background-color: #fff;
+  background: #fff;
 }
 .btn:active {
   transform: scale(0.99);

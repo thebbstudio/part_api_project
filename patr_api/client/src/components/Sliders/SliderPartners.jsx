@@ -42,7 +42,14 @@ function SliderPartners({ partners }) {
 
   return (
     <div className="sliderPartners">
-      <Carousel initialization={{ slidesForShow, slidesForScroll }}>
+      <Carousel initialization={{
+        slidesForShow,
+        slidesForScroll,
+        auto: true,
+        interval: 5000,
+        arrow: true,
+      }}
+      >
         {partners.map((onePartner) => (
           <MiniaturePartner partner={onePartner} key={onePartner.id} />
         )) }

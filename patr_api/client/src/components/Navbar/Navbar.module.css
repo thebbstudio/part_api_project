@@ -35,18 +35,22 @@
 }
 
 
-
-@media (max-width: 1000px) {
+@media (max-width: 1075px) {
   .navbar {
     font-size: 0.9rem;
   }
   .listItem a:hover {
-  transform: scaleX(1);
+  transform: none;
   }
 }
-@media (max-width: 775px) {
+@media (max-width: 1000px) {
   .navbar {
     font-size: 0.8rem;
+  }
+}
+@media (max-width: 870px) {
+  .navbar {
+    font-size: 0.7rem;
   }
 }
 @media (max-width: 750px) {

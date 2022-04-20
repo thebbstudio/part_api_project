@@ -7,6 +7,9 @@ function SliderEvents({ events }) {
   const parametersCarousel = {
     slidesForShow: 1,
     slidesForScroll: 1,
+    auto: true,
+    interval: 10000,
+    arrow: true,
   };
 
   return (

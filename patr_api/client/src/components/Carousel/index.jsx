@@ -1,14 +1,3 @@
-/*
-  Для того, чтобы задать параметры карусели,
-  нужно в родительском компоненте создать объект с полями
-  и передать в качестве параметра
-
-  const obj = {
-    slidesForShow: number    ---- кол-во элементов на экране
-    slidesForScroll: number  ---- Количество проскролленных элементов за нажатие
-  }
-*/
-
 import React, {
   Children,
   useState,
@@ -24,12 +13,15 @@ function Carousel({ children, initialization = {} }) {
   const [pages, setPages] = useState([]);
   const [offset, setOffset] = useState(0);
   const divWindow = useRef();
+  const leftBtn = useRef();
+  const rightBtn = useRef();
 
   let {
     slidesForShow,
     slidesForScroll,
-    auto = false,
-    interval = 5000,
+    auto,
+    interval,
+    arrow,
   } = initialization;
 
   let widthOfOneSlide = 100 / slidesForShow;
@@ -61,12 +53,16 @@ function Carousel({ children, initialization = {} }) {
         maxWidth: `${widthOfOneSlide}%`,
       },
     })));
-    const oneElement = children.filter((el) => el.type === 'video');
-    console.log(oneElement);
 
+    if (!arrow) {
+      const buttons = [leftBtn.current, rightBtn.current];
+      buttons.forEach((button) => {
+        button.classList.add('hidden');
+      });
+    }
     let autoSlide = auto ? setInterval(handleSlideRight, interval) : undefined;
     return () => clearInterval(autoSlide);
-  }, [initialization]);
+  }, [children]);
 
   return (
     <div className={cl.main}>
@@ -74,6 +70,7 @@ function Carousel({ children, initialization = {} }) {
         type="button"
         onClick={() => handleSlideLeft()}
         className={cl.btn}
+        ref={leftBtn}
       >
         <svg
           className={`${cl.svg} ${cl.svgLeft}`}
@@ -104,6 +101,7 @@ function Carousel({ children, initialization = {} }) {
         type="button"
         onClick={() => handleSlideRight()}
         className={cl.btn}
+        ref={rightBtn}
       >
         <svg
           className={`${cl.svg} ${cl.svgRight}`}
