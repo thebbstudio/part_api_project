@@ -7,8 +7,8 @@ function Navbar() {
     { title: 'Главная', path: '/' },
     { title: 'Новости', path: '/news' },
     { title: 'Мероприятия', path: '/events' },
-    { title: 'Сотрудники', path: '/staff' },
     { title: 'Парк', path: '/park' },
+    { title: 'Сотрудники', path: '/staff' },
     { title: 'Услуги', path: '/paidservices' },
     { title: 'Документация', path: '/documentation' },
   ]);

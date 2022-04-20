@@ -9,7 +9,8 @@ function SliderVideo() {
     slidesForShow: 1,
     slidesForScroll: 1,
     auto: true,
-    interval: 10000,
+    interval: 15000,
+    arrow: false,
   };
   return (
     <section className="sliderVideo">

@@ -60,6 +60,9 @@ img {
   height: 30px;
   mix-blend-mode: normal;
 }
+.hidden {
+  display: none;
+}
 
 .container {
   max-width: 1200px;

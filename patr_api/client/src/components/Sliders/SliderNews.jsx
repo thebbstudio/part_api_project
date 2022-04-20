@@ -40,7 +40,8 @@ function SliderNews({ news }) {
         slidesForShow,
         slidesForScroll,
         auto: true,
-        interval: 5000,
+        interval: 8000,
+        arrow: true,
       }}
       >
         {news.map((oneNews) => (
