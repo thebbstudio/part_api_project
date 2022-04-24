@@ -53,7 +53,9 @@ img {
   display: inline-block;
   text-decoration: none;
 }
-
+.section {
+  margin: 1rem 0 4rem;
+}
 .svg {
   fill: #fff;
   width: 30px;

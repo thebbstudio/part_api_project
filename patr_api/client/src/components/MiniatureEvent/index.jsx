@@ -29,9 +29,7 @@ function MiniatureEvent({ style, event }) {
       </div>
       <div className={cl.about}>
         <h5>{event.title}</h5>
-        <p>
-          {event.description}
-        </p>
+        <p dangerouslySetInnerHTML={{ __html: event.description }}></p>
         <p className={cl.date}>
           <span>{`${datePublication.getDate()} ${getMonth(datePublication)} ${datePublication.getFullYear()}`}</span>
         </p>

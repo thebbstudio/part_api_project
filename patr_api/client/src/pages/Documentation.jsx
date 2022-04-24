@@ -28,7 +28,7 @@ function Documentation() {
       <h1 className="title">Документы</h1>
       {docs.map((el, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <section key={index}>
+        <section className="section" key={index}>
           <h5 className="docs-title">{el[0].category}</h5>
           <ul className="docs-ul">
             {el.map((elem) => (

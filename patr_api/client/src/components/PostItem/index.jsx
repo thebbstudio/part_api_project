@@ -21,7 +21,7 @@ function PostItem({ post }) {
     ];
     return days[date.getMonth()];
   };
-  const html = () => ({ __html: post.description });
+
   return (
     <div className={cl.miniEvent}>
       <div className={cl.img}>
@@ -29,7 +29,7 @@ function PostItem({ post }) {
       </div>
       <div className={cl.about}>
         <h5>{post.title}</h5>
-        <p dangerouslySetInnerHTML={html()} />
+        <p dangerouslySetInnerHTML={{ __html: post.description }} />
         <p className={cl.date}>
           {`${datePublication.getDate()} ${getMonth(datePublication)} ${datePublication.getFullYear()}`}
         </p>
