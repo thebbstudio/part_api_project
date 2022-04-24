@@ -1,7 +1,6 @@
 import React from 'react';
 import PropType from 'prop-types';
 import cl from './MiniatureNew.module.css';
-// import img from '../../assets/img/forNews/w9QnjwAXPzQ.jpg';
 
 function MiniatureNew({ style, news }) {
   return (

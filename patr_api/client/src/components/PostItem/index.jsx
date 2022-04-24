@@ -1,5 +1,4 @@
 import React from 'react';
-// import img from '../../assets/img/forEvents/10.jpg';
 import cl from './PostItem.module.css';
 
 function PostItem({ post }) {

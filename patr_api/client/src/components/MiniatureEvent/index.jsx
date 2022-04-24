@@ -1,6 +1,5 @@
 import React from 'react';
 import PropType from 'prop-types';
-// import img from '../../assets/img/forEvents/10.jpg';
 import cl from './MiniatureEvent.module.css';
 
 function MiniatureEvent({ style, event }) {
