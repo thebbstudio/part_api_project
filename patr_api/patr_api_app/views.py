@@ -87,17 +87,8 @@ class ParkView(ModelViewSet):
     queryset = Park.objects.all()
     serializer_class = ParkSerializer
 
-    @action(methods=['get'], detail=True)
-    def getsomecategory(self, request, pk):
-        parkobjs = Park.objects.filter(category_id=pk)
-        d = []
-        for _ in parkobjs:
-            d.append( {'id': _.pk, 'title': _.title, 'img_path': _.img_path.url} )
-        print(d)
-        return Response(d)
 
-
-class ParkCategoriesView(ModelViewSet):
+class ParkView(ModelViewSet):
     queryset = ParkCategories.objects.all()
     serializer_class = ParkCategoriesSerializer
 

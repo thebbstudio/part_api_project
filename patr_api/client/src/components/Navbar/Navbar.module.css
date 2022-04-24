@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   background: linear-gradient(to top, #378b73, #2C6F5C);
-  z-index: 1000;
+  z-index: 9999;
 }
 .list {
   width: 100%;
@@ -35,22 +35,18 @@
 }
 
 
-@media (max-width: 1075px) {
+
+@media (max-width: 1000px) {
   .navbar {
     font-size: 0.9rem;
   }
   .listItem a:hover {
-  transform: none;
+  transform: scaleX(1);
   }
 }
-@media (max-width: 1000px) {
+@media (max-width: 775px) {
   .navbar {
     font-size: 0.8rem;
-  }
-}
-@media (max-width: 870px) {
-  .navbar {
-    font-size: 0.7rem;
   }
 }
 @media (max-width: 750px) {

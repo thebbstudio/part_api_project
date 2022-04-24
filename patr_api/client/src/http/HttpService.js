@@ -14,7 +14,7 @@ export default class HttpService {
   }
 
   static async getEvents({ ...obj }) {
-    const response = await axios.get(`${this.API_URL}/events`, {
+    const response = await axios.get(`${this.API_URL}/events/`, {
       params: {
         format: obj.format,
       },
@@ -23,7 +23,7 @@ export default class HttpService {
   }
 
   static async getPartners({ ...obj }) {
-    const response = await axios.get(`${this.API_URL}/partners`, {
+    const response = await axios.get(`${this.API_URL}/allpartners`, {
       params: {
         format: obj.format,
       },
@@ -32,7 +32,7 @@ export default class HttpService {
   }
 
   static async getStaff({ ...obj }) {
-    const response = await axios.get(`${this.API_URL}/staff`, {
+    const response = await axios.get(`${this.API_URL}/allstaff`, {
       params: {
         format: obj.format,
       },
@@ -40,25 +40,18 @@ export default class HttpService {
     return response;
   }
 
-  static async getCards({ ...params }) {
-    if (!params.type) {
-      const response = await axios.get(`${this.API_URL}/parkcategories`, {
-        params: {
-          format: params.format,
-        },
-      });
-      return response;
-    }
-    const response = await axios.get(`${this.API_URL}/park/${params.type}/getsomecategory`, {
+  static async getCards({ ...obj }) {
+    const response = await axios.get(`${this.API_URL}/allpark`, {
       params: {
-        format: params.format,
+        format: obj.format,
+        type: obj.type,
       },
     });
     return response;
   }
 
   static async getDocs({ ...obj }) {
-    const response = await axios.get(`${this.API_URL}/documents`, {
+    const response = await axios.get(`${this.API_URL}/alldocuments`, {
       params: {
         format: obj.format,
       },

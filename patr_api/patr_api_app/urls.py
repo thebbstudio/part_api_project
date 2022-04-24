@@ -12,7 +12,7 @@ router.register('documents', DocsView)
 router.register('partners', PartnersView)
 router.register('videos', VideosView)
 router.register('park', ParkView)
-router.register('parkcategories', ParkCategoriesView)
+router.register('parkcategories', ParkView)
 
 urlpatterns = [
     #expath('news/nextnews', nextnews)

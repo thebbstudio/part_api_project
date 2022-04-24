@@ -4,24 +4,6 @@ import PropType from 'prop-types';
 import cl from './MiniatureEvent.module.css';
 
 function MiniatureEvent({ style, event }) {
-  const datePublication = new Date(event.date_publication);
-  const getMonth = (date) => {
-    let days = [
-      'января',
-      'февраля',
-      'марта',
-      'апреля',
-      'мая',
-      'июня',
-      'июля',
-      'августа',
-      'сентября',
-      'октября',
-      'ноября',
-      'декабря',
-    ];
-    return days[date.getMonth()];
-  };
   return (
     <div className={cl.miniEvent} style={{ ...style }}>
       <div className={cl.img}>
@@ -33,7 +15,7 @@ function MiniatureEvent({ style, event }) {
           {event.description}
         </p>
         <p className={cl.date}>
-          <span>{`${datePublication.getDate()} ${getMonth(datePublication)} ${datePublication.getFullYear()}`}</span>
+          <span>{event.date_publication}</span>
         </p>
       </div>
     </div>

@@ -6,9 +6,6 @@
 }
 .img img {
   border-radius: 5px;
-  object-fit: cover;
-  height: 350px;
-  margin: 0 auto;
 }
 .about {
   width: 50%;

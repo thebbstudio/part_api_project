@@ -36,14 +36,7 @@ function SliderNews({ news }) {
 
   return (
     <div className="sliderNews">
-      <Carousel initialization={{
-        slidesForShow,
-        slidesForScroll,
-        auto: true,
-        interval: 8000,
-        arrow: true,
-      }}
-      >
+      <Carousel initialization={{ slidesForShow, slidesForScroll }}>
         {news.map((oneNews) => (
           <MiniatureNew news={oneNews} key={oneNews.id} />
         ))}

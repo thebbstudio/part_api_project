@@ -1,4 +1,5 @@
 import React from 'react';
+import img from '../../assets/img/Staff/gilev2.jpg';
 import cl from './StaffItem.module.css';
 
 function StaffItem({ staff }) {

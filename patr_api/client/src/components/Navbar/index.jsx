@@ -7,9 +7,8 @@ function Navbar() {
     { title: 'Главная', path: '/' },
     { title: 'Новости', path: '/news' },
     { title: 'Мероприятия', path: '/events' },
-    { title: 'Парк', path: '/park' },
     { title: 'Сотрудники', path: '/staff' },
-    { title: 'Услуги', path: '/paidservices' },
+    { title: 'Парк', path: '/park' },
     { title: 'Документация', path: '/documentation' },
   ]);
   const [burgerChecked, setBurgerCheched] = useState(false);

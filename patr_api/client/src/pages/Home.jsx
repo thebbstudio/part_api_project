@@ -39,9 +39,7 @@ function Home() {
 
   return (
     <div className="container">
-      <section className="videos">
-        <SliderVideo />
-      </section>
+      <SliderVideo />
 
       <section className="news">
         <h2 className="title">Новости</h2>
