@@ -11,7 +11,7 @@ function CardItem({ card }) {
           <div className={cl.cardImg}>
             <img src={card.img_path} alt={card.title} />
           </div>
-          <p className={cl.title}>{card.title}</p>
+          <p className={cl.title} dangerouslySetInnerHTML={{ __html: card.title }}></p>
         </div>
       </Link>
     </div>

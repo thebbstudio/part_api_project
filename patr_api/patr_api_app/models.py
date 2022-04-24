@@ -19,6 +19,7 @@ class News(models.Model):
     education_departament = models.BooleanField(default=False)
     is_slider = models.BooleanField(default=False)
     imgs_path = models.CharField(max_length=255)
+    video = models.TextField(default='')
 
 class PaidServise(models.Model):
     title = models.CharField(max_length=100)
@@ -35,7 +36,7 @@ class Events(models.Model):
     short_text = models.CharField(max_length=500)
     is_slider = models.BooleanField(default=False)
     imgs_path = models.CharField(max_length=255)
-
+    video = models.TextField(default='')
 
 class Documents(models.Model):
     title = models.CharField(max_length=150)
