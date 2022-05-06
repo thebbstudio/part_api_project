@@ -1,6 +1,5 @@
 import React from 'react';
 import PropType from 'prop-types';
-// import img from '../../assets/img/forEvents/10.jpg';
 import cl from './MiniatureEvent.module.css';
 
 function MiniatureEvent({ style, event }) {
@@ -11,9 +10,7 @@ function MiniatureEvent({ style, event }) {
       </div>
       <div className={cl.about}>
         <h5>{event.title}</h5>
-        <p>
-          {event.description}
-        </p>
+        <p dangerouslySetInnerHTML={{ __html: event.description }}></p>
         <p className={cl.date}>
           <span>{event.date_publication}</span>
         </p>

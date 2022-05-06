@@ -8,7 +8,7 @@ function StaffItem({ staff }) {
       <div className={cl.staffImg}>
         <img src={staff.img_path} alt={staff.full_name} />
       </div>
-      <p className={cl.fullName}>{staff.full_name}</p>
+      <p className={cl.fullName} dangerouslySetInnerHTML={{ __html: staff.full_name }}></p>
       <p>{staff.position}</p>
     </div>
   );

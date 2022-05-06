@@ -19,7 +19,14 @@ class News(models.Model):
     education_departament = models.BooleanField(default=False)
     is_slider = models.BooleanField(default=False)
     imgs_path = models.CharField(max_length=255)
+    video = models.TextField(default='')
 
+class PaidServise(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=1000)
+    cost = models.IntegerField()
+    imgPath = models.ImageField(upload_to='img/paidservise/')
+    dimensionMeasurement = models.CharField(max_length=50)
 
 class Events(models.Model):
     title = models.CharField(max_length=100)
@@ -29,12 +36,12 @@ class Events(models.Model):
     short_text = models.CharField(max_length=500)
     is_slider = models.BooleanField(default=False)
     imgs_path = models.CharField(max_length=255)
-
+    video = models.TextField(default='')
 
 class Documents(models.Model):
     title = models.CharField(max_length=150)
     href_string = models.FileField(upload_to='docs/')
-    category = models.CharField(max_length=50)
+    category = models.IntegerField()
 
 
 class DocType(models.Model):
@@ -57,7 +64,7 @@ class Partners (models.Model):
 
 
 class Videos(models.Model):
-    img_path = models.ImageField()
+    title = models.CharField(max_length=100, default='')
     href_string = models.FileField(upload_to='video/')
     date_publication = models.DateTimeField()
 
