@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Spinner } from 'react-spinner-animated';
 import doc from '../assets/img/doc.svg';
 import HttpService from '../http/HttpService';
 
@@ -20,28 +21,44 @@ function Documentation() {
   };
 
   useEffect(() => {
+    document.querySelector('#upper').style.stroke = '#378b73';
     getDocs();
     sortDocs(docs);
   }, []);
   return (
     <div className="container">
       <h1 className="title">Документы</h1>
-      {docs.map((el, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <section className="section" key={index}>
-          <h5 className="docs-title">{el[0].category}</h5>
-          <ul className="docs-ul">
-            {el.map((elem) => (
-              <li key={elem.id}>
-                <a href={elem.href_string} target="_blank" rel="noreferrer">
-                  <img src={doc} alt="doc" />
-                  {elem.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))}
+      {docs[0] === undefined ? (
+        <div style={{ height: '300px' }}>
+          <center>
+            <Spinner
+              text="Загрузка..."
+              width="100px"
+              height="100px"
+              center={false}
+            />
+          </center>
+        </div>
+      )
+        : (
+          docs.map((el, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+            <section className="section" key={index}>
+              <h5 className="docs-title">{el[0].category}</h5>
+              <ul className="docs-ul">
+                {el.map((elem) => (
+                  <li key={elem.id}>
+                    <a href={elem.href_string} target="_blank" rel="noreferrer">
+                      <img src={doc} alt="doc" />
+                      {elem.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        )}
+
       <h5 className="docs-title">Противодействие коррупции</h5>
       <p className="docs-text">
         Уважаемые граждане! Если вам стало известно о фактах проявления коррупции, Вы можете:

@@ -1,13 +1,14 @@
 import React from 'react';
 import PropType from 'prop-types';
-// import logo from '../../assets/img/forPartners/bbslogop.jpg';
 import cl from './MiniaturePartner.module.css';
 
 function MiniaturePartner({ style, partner }) {
   return (
-    <div style={{ ...style }}>
-      <img className={cl.img} src={partner.img_path} alt={partner.title} />
-    </div>
+    <a href={partner.href_string} target="_blank" rel="noreferrer">
+      <div style={{ ...style }}>
+        <img className={cl.img} src={partner.img_path} alt={partner.title} />
+      </div>
+    </a>
   );
 }
 

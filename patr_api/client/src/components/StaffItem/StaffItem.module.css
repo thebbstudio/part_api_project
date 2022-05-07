@@ -4,13 +4,16 @@
 }
 
 .staffImg {
-  max-width: 270px;
-  max-height: 270px;
+  width: 270px;
+  height: 270px;
   margin: 0 auto 1rem;
 }
 
 .staffImg img {
   border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 .fullName {
   font-family: semiFont;

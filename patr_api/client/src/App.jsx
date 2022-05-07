@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+
 // components
 import Documentation from './pages/Documentation';
 import ErrorPageNotFound from './pages/ErrorPageNotFound';
@@ -12,6 +13,7 @@ import Park from './pages/Park';
 import Staff from './pages/Staff';
 
 // styles
+import 'react-spinner-animated/dist/index.css';
 import './styles/reset.css';
 import './styles/style.css';
 
