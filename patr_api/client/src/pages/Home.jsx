@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Spinner } from 'react-spinner-animated';
 import SliderEvents from '../components/Sliders/SliderEvents';
 // components
 import SliderNews from '../components/Sliders/SliderNews';
@@ -34,6 +35,7 @@ function Home() {
   };
 
   useEffect(() => {
+    document.querySelector('#upper').style.stroke = '#378b73';
     getAll();
   }, []);
 
@@ -43,20 +45,36 @@ function Home() {
         <SliderVideo />
       </section>
 
-      <section className="news">
-        <h2 className="title">Новости</h2>
-        <SliderNews news={news} />
-      </section>
+      {news[0] === undefined ? (
+        <div style={{ height: '300px' }}>
+          <center>
+            <Spinner
+              text="Загрузка..."
+              width="100px"
+              height="100px"
+              center={false}
+            />
+          </center>
+        </div>
+      )
+        : (
+          <>
+            <section className="news">
+              <h2 className="title">Новости</h2>
+              <SliderNews news={news} />
+            </section>
 
-      <section className="events">
-        <h2 className="title">Мероприятия</h2>
-        <SliderEvents events={events} />
-      </section>
+            <section className="events">
+              <h2 className="title">Мероприятия</h2>
+              <SliderEvents events={events} />
+            </section>
 
-      <section className="partners">
-        <h2 className="title">Партнеры</h2>
-        <SliderPartners partners={partners} />
-      </section>
+            <section className="partners">
+              <h2 className="title">Партнеры</h2>
+              <SliderPartners partners={partners} />
+            </section>
+          </>
+        )}
 
     </div>
   );

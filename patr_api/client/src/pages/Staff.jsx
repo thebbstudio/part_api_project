@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Spinner } from 'react-spinner-animated';
 import StaffItem from '../components/StaffItem';
 import HttpService from '../http/HttpService';
 
@@ -11,19 +12,34 @@ function Staff() {
   };
 
   useEffect(() => {
+    document.querySelector('#upper').style.stroke = '#378b73';
     getStaff();
   }, []);
 
   return (
     <div className="container">
       <h1 className="title">Сотрудники</h1>
-      <div className="staff">
-        {staff.map((oneStaff) => (
-          <div className="staff-item" key={oneStaff.id}>
-            <StaffItem staff={oneStaff} />
-          </div>
-        ))}
-      </div>
+      {staff[0] === undefined ? (
+        <div style={{ height: '300px' }}>
+          <center>
+            <Spinner
+              text="Загрузка..."
+              width="100px"
+              height="100px"
+              center={false}
+            />
+          </center>
+        </div>
+      ) : (
+        <div className="staff">
+          {staff.map((oneStaff) => (
+            <div className="staff-item" key={oneStaff.id}>
+              <StaffItem staff={oneStaff} />
+            </div>
+          ))}
+        </div>
+      )}
+
     </div>
 
   );
