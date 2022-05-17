@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import PropType from 'prop-types';
 import cl from './MiniatureEvent.module.css';
@@ -29,9 +30,9 @@ function MiniatureEvent({ style, event }) {
       <div className={cl.about}>
         <h5>{event.title}</h5>
         <p dangerouslySetInnerHTML={{ __html: event.description }}></p>
-        <p className={cl.date}>
+        {/* <p className={cl.date}>
           <span>{`${datePublication.getDate()} ${getMonth(datePublication)} ${datePublication.getFullYear()}`}</span>
-        </p>
+        </p> */}
       </div>
     </div>
   );

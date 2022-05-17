@@ -15,17 +15,14 @@ function Home() {
   const getNews = async () => {
     const allNews = await HttpService.getNews({ format: 'json' });
     setNews(allNews.data);
-    // console.log(allNews.data);
   };
   const getEvents = async () => {
     const allEvents = await HttpService.getEvents({ format: 'json' });
     setEvents(allEvents.data);
-    // console.log(allEvents.data);
   };
   const getPartners = async () => {
     const allPartners = await HttpService.getPartners({ format: 'json' });
     setPartners(allPartners.data);
-    // console.log(allPartners.data);
   };
 
   const getAll = () => {

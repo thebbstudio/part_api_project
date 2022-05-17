@@ -9,7 +9,7 @@ function Navbar() {
     { title: 'Мероприятия', path: '/events' },
     { title: 'Парк', path: '/park' },
     { title: 'Сотрудники', path: '/staff' },
-    { title: 'Услуги', path: '/paidservices' },
+    // { title: 'Услуги', path: '/paidservices' },
     { title: 'Документация', path: '/documentation' },
   ]);
   const [burgerChecked, setBurgerCheched] = useState(false);

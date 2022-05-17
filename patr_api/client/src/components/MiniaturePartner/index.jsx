@@ -4,8 +4,8 @@ import cl from './MiniaturePartner.module.css';
 
 function MiniaturePartner({ style, partner }) {
   return (
-    <a href={partner.href_string} target="_blank" rel="noreferrer">
-      <div style={{ ...style }}>
+    <a style={{ ...style }} href={partner.href_string} target="_blank" rel="noreferrer">
+      <div>
         <img className={cl.img} src={partner.img_path} alt={partner.title} />
       </div>
     </a>

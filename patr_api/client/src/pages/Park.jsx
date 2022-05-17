@@ -6,7 +6,6 @@ import HttpService from '../http/HttpService';
 
 function Park() {
   const params = useParams();
-  console.log(params);
   const [cards, setCards] = useState([]);
 
   const getCards = async (format = 'json', type = params.type ? params.type : '') => {
@@ -19,14 +18,14 @@ function Park() {
   };
 
   useEffect(() => {
-    document.querySelector('#upper').style.stroke = '#378b73';
+    // document.querySelector('#upper').style.stroke = '#378b73';
     getCards();
   }, [params]);
 
   return (
     <div className="container">
       <h1 className="title">Парк</h1>
-      {cards[0] === undefined ? (
+      {/* {cards[0] === undefined ? (
         <div style={{ height: '300px' }}>
           <center>
             <Spinner
@@ -38,13 +37,13 @@ function Park() {
           </center>
         </div>
       )
-        : (
-          <div className="parkCards">
-            {cards.map((element) => (
-              <CardItem card={element} key={element.id} />
-            ))}
-          </div>
-        )}
+        : ( */}
+      <div className="parkCards">
+        {cards.map((element) => (
+          <CardItem card={element} key={element.id} />
+        ))}
+      </div>
+      {/* )} */}
     </div>
   );
 }

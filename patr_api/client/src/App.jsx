@@ -23,7 +23,7 @@ function App() {
       <Route path="/" element={<MainPage />}>
         <Route index element={<Home />} />
         <Route path="news" element={<News />} />
-        <Route path="paidservices" element={<PaidServices />} />
+        {/* <Route path="paidservices" element={<PaidServices />} /> */}
         <Route path="staff" element={<Staff />} />
         <Route path="documentation" element={<Documentation />} />
         <Route path="park" element={<Park />}>

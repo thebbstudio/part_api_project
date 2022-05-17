@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import cl from './PostItem.module.css';
 
@@ -29,9 +30,9 @@ function PostItem({ post }) {
       <div className={cl.about}>
         <h5>{post.title}</h5>
         <p dangerouslySetInnerHTML={{ __html: post.description }} />
-        <p className={cl.date}>
+        {/* <p className={cl.date}>
           {`${datePublication.getDate()} ${getMonth(datePublication)} ${datePublication.getFullYear()}`}
-        </p>
+        </p> */}
       </div>
     </div>
   );
