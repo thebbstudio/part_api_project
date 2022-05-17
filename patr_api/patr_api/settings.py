@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'patr_api_app.apps.PatrApiAppConfig'
+    'web.apps.PatrApiAppConfig'
 ]
 
 MIDDLEWARE = [
