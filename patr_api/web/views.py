@@ -28,16 +28,16 @@ class EventsView(APIView):
     def get(self, request):
 
         if 'id' in request.GET:
-            return Response(News.objects.filter(id = request.GET['id']).values())
+            return Response(Events.objects.filter(id = request.GET['id']).values())
         
         numEvents = 15
         if 'numEvents' in request.GET:
             numEvents = int(request.GET['numEvents'])
         
         if 'isSlider' in request.GET:
-            return Response(list(News.objects.all()[:int(numEvents)].values('id','title', 'description','img_path','date_publication')))
+            return Response(list(Events.objects.all()[:int(numEvents)].values('id','title', 'description','img_path','date_publication')))
 
-        return Response(list(News.objects.all()[:int(numEvents)].values()))
+        return Response(list(Events.objects.all()[:int(numEvents)].values()))
 
 
 
@@ -69,6 +69,11 @@ class ParkView(APIView):
 class ParkCategoriesView(APIView): 
     def get(self, request):
         return Response(list(ParkCategories.objects.all().values()))
+
+
+class PaidServiseView(APIView): 
+    def get(self, request):
+        return Response(list(PaidServise.objects.all().values()))
 
 
 def index(request):

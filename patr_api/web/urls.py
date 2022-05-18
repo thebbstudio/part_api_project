@@ -11,5 +11,6 @@ urlpatterns = [
     path('partners', PartnersView.as_view()),
     path('videos', VideosView.as_view()),
     path('park', ParkView.as_view()),
+    path('paidservises', PaidServiseView.as_view()),
     path('parkcategories', ParkCategoriesView.as_view())
 ]

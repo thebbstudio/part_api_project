@@ -1,2 +1,8 @@
 /venv
 /patr_api/venv
+
+# Django stuff:
+*.log
+*.pot
+*.pyo
+*.pyc
