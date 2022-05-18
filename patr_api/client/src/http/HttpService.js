@@ -2,7 +2,7 @@ import axios from 'axios';
 import BASE_URL from './config';
 
 export default class HttpService {
-  static API_URL = `${BASE_URL}/patr_api`;
+  static API_URL = `${BASE_URL}/api`;
 
   static async getNews({ ...obj }) {
     const response = await axios.get(`${this.API_URL}/news`, {
