@@ -41,7 +41,6 @@ export default class HttpService {
   }
 
   static async getCards({ ...params }) {
-    console.log(params);
     if (!params.id) {
       const response = await axios.get(`${this.API_URL}/parkcategories`, {
         params: {
@@ -83,6 +82,15 @@ export default class HttpService {
       params: {
         format: obj.format,
         id: obj.id,
+      },
+    });
+    return response;
+  }
+
+  static async getPaidService({ ...obj }) {
+    const response = await axios.get(`${this.API_URL}/paidservises`, {
+      params: {
+        format: obj.format,
       },
     });
     return response;

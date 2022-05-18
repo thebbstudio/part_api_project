@@ -32,8 +32,8 @@ function PostItem({ post }) {
           <img src={post.img_path} alt={post.title} />
         </div>
         <div className={cl.about}>
-          <h5>{post.title}</h5>
-          <p dangerouslySetInnerHTML={{ __html: post.description }} />
+          <h5 className="black-title">{post.title}</h5>
+          <p className="black-text" dangerouslySetInnerHTML={{ __html: post.description }} />
           {/* <p className={cl.date}>
           {`${datePublication.getDate()} ${getMonth(datePublication)} ${datePublication.getFullYear()}`}
         </p> */}

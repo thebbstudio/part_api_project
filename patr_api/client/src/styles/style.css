@@ -39,6 +39,20 @@ h6 {
   margin: 4rem 0 1.2rem;
 }
 
+.black-title {
+  font-family: headerFont;
+  color: #000;
+}
+
+.black-semi {
+  font-family: semiFont;
+  color: #000;
+}
+
+.black-text {
+  font-family: generalFont;
+  color: #000;
+}
 
 li {
   list-style: none;
