@@ -1,8 +1,11 @@
 /* eslint-disable max-len */
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import cl from './PostItem.module.css';
 
 function PostItem({ post }) {
+  const location = useLocation();
+  // console.log(location);
   const datePublication = new Date(post.date_publication);
   const getMonth = (date) => {
     let days = [
@@ -23,18 +26,20 @@ function PostItem({ post }) {
   };
 
   return (
-    <div className={cl.miniEvent}>
-      <div className={cl.img}>
-        <img src={post.img_path} alt={post.title} />
-      </div>
-      <div className={cl.about}>
-        <h5>{post.title}</h5>
-        <p dangerouslySetInnerHTML={{ __html: post.description }} />
-        {/* <p className={cl.date}>
+    <Link to={location.pathname === '/news' ? `/post-news/${post.id}` : `/post-event/${post.id}`}>
+      <div className={cl.miniEvent}>
+        <div className={cl.img}>
+          <img src={post.img_path} alt={post.title} />
+        </div>
+        <div className={cl.about}>
+          <h5>{post.title}</h5>
+          <p dangerouslySetInnerHTML={{ __html: post.description }} />
+          {/* <p className={cl.date}>
           {`${datePublication.getDate()} ${getMonth(datePublication)} ${datePublication.getFullYear()}`}
         </p> */}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

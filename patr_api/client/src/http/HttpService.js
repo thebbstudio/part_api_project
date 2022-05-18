@@ -41,7 +41,8 @@ export default class HttpService {
   }
 
   static async getCards({ ...params }) {
-    if (!params.type) {
+    console.log(params);
+    if (!params.id) {
       const response = await axios.get(`${this.API_URL}/parkcategories`, {
         params: {
           format: params.format,
@@ -49,9 +50,10 @@ export default class HttpService {
       });
       return response;
     }
-    const response = await axios.get(`${this.API_URL}/park/${params.type}/getsomecategory`, {
+    const response = await axios.get(`${this.API_URL}/park`, {
       params: {
         format: params.format,
+        id: params.id,
       },
     });
     return response;
@@ -61,6 +63,26 @@ export default class HttpService {
     const response = await axios.get(`${this.API_URL}/documents`, {
       params: {
         format: obj.format,
+      },
+    });
+    return response;
+  }
+
+  static async getPostNews({ ...obj }) {
+    const response = await axios.get(`${this.API_URL}/news`, {
+      params: {
+        format: obj.format,
+        id: obj.id,
+      },
+    });
+    return response;
+  }
+
+  static async getPostEvent({ ...obj }) {
+    const response = await axios.get(`${this.API_URL}/events`, {
+      params: {
+        format: obj.format,
+        id: obj.id,
       },
     });
     return response;

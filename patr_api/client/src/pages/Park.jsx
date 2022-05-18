@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Spinner } from 'react-spinner-animated';
+// import { Spinner } from 'react-spinner-animated';
 import CardItem from '../components/CardItem';
 import HttpService from '../http/HttpService';
 
 function Park() {
   const params = useParams();
+  console.log(params);
   const [cards, setCards] = useState([]);
 
-  const getCards = async (format = 'json', type = params.type ? params.type : '') => {
+  const getCards = async (format = 'json', id = params.id ? params.id : '') => {
     const allCards = await HttpService.getCards({
       format,
-      type,
+      id,
     });
     setCards([]);
     setCards(allCards.data);

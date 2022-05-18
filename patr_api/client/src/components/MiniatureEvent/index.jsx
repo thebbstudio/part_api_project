@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import PropType from 'prop-types';
+import { Link } from 'react-router-dom';
 import cl from './MiniatureEvent.module.css';
 
 function MiniatureEvent({ style, event }) {
@@ -23,18 +24,22 @@ function MiniatureEvent({ style, event }) {
     return days[date.getMonth()];
   };
   return (
-    <div className={cl.miniEvent} style={{ ...style }}>
-      <div className={cl.img}>
-        <img src={event.img_path} alt="" />
-      </div>
-      <div className={cl.about}>
-        <h5>{event.title}</h5>
-        <p dangerouslySetInnerHTML={{ __html: event.description }}></p>
-        {/* <p className={cl.date}>
+    <Link to={`/post-event/${event.id}`} style={{ ...style }}>
+      <div className={cl.miniEvent}>
+
+        <div className={cl.img}>
+          <img src={event.img_path} alt="" />
+        </div>
+        <div className={cl.about}>
+          <h5>{event.title}</h5>
+          <p dangerouslySetInnerHTML={{ __html: event.description }}></p>
+          {/* <p className={cl.date}>
           <span>{`${datePublication.getDate()} ${getMonth(datePublication)} ${datePublication.getFullYear()}`}</span>
         </p> */}
+        </div>
+
       </div>
-    </div>
+    </Link>
   );
 }
 

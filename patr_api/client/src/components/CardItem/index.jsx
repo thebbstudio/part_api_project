@@ -5,7 +5,7 @@ import cl from './CardItem.module.css';
 
 function CardItem({ card }) {
   const params = useParams();
-  if (params.type === undefined) {
+  if (params.id === undefined) {
     return (
       <div className={cl.parkCard}>
         <Link to={card.id.toString()}>

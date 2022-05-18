@@ -16,7 +16,8 @@ import Staff from './pages/Staff';
 import 'react-spinner-animated/dist/index.css';
 import './styles/reset.css';
 import './styles/style.css';
-import PostIdPage from './pages/PostIdPage';
+import NewsIdPage from './pages/NewsIdPage';
+import EventIdPage from './pages/EventIdPage';
 
 function App() {
   return (
@@ -24,14 +25,19 @@ function App() {
       <Route path="/" element={<MainPage />}>
         <Route index element={<Home />} />
         <Route path="news" element={<News />} />
-        {/* <Route path="paidservices" element={<PaidServices />} /> */}
+        <Route path="paidservices" element={<PaidServices />} />
         <Route path="staff" element={<Staff />} />
         <Route path="documentation" element={<Documentation />} />
         <Route path="park" element={<Park />}>
-          <Route path=":type" element={<Home />} />
+          <Route path=":id" element={<Home />} />
         </Route>
         <Route path="events" element={<Events />} />
-        <Route path="post" element={<PostIdPage />} />
+        <Route path="post-news" element={<NewsIdPage />}>
+          <Route path=":id" element={<NewsIdPage />} />
+        </Route>
+        <Route path="post-event" element={<EventIdPage />}>
+          <Route path=":id" element={<EventIdPage />} />
+        </Route>
       </Route>
       <Route path="*" element={<ErrorPageNotFound />} />
     </Routes>

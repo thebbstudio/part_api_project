@@ -1,15 +1,20 @@
 import React from 'react';
 import PropType from 'prop-types';
+import { Link } from 'react-router-dom';
 import cl from './MiniatureNew.module.css';
 
 function MiniatureNew({ style, news }) {
   return (
-    <div className={cl.miniNew} style={{ ...style }}>
-      <div className={cl.img}>
-        <img src={news.img_path} alt="medals" />
+    <Link to={`/post-news/${news.id}`} style={{ ...style }}>
+      <div className={cl.miniNew}>
+
+        <div className={cl.img}>
+          <img src={news.img_path} alt="medals" />
+        </div>
+        <p>{news.title}</p>
+
       </div>
-      <p>{news.title}</p>
-    </div>
+    </Link>
   );
 }
 MiniatureNew.defaultProps = {
