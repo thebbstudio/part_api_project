@@ -67,13 +67,13 @@ function PaidForm() {
       </div>
 
       <div className={cl.block}>
-        <label htmlFor="number-of-participants">Количество участников:</label>
+        <label htmlFor="numberPlayers">Количество участников:</label>
         <input
           placeholder="Введите кол-во"
           className={`${cl.input} ${cl.inputVS}`}
           type="number"
-          name="numberOfParticipants"
-          id="numberOfParticipants"
+          name="numberPlayers"
+          id="numberPlayers"
           required
         />
       </div>
