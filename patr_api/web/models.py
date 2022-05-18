@@ -30,6 +30,7 @@ class PaidServise(models.Model):
     cost = models.IntegerField()
     imgPath = models.ImageField(upload_to='img/paidservise/')
     dimensionMeasurement = models.CharField(max_length=50)
+    isActive =models.BooleanField(default=True)
 
 class Events(models.Model):
     title = models.CharField(max_length=100)

@@ -73,7 +73,7 @@ class ParkCategoriesView(APIView):
 
 class PaidServiseView(APIView): 
     def get(self, request):
-        return Response(list(PaidServise.objects.all().values()))
+        return Response(list(PaidServise.objects.filter(isActive = True).values()))
 
 
 def index(request):
