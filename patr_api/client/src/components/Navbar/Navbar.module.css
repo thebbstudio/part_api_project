@@ -1,6 +1,6 @@
 .navbar {
   position: sticky;
-  top: 0;
+  top: -1px;
   background: linear-gradient(to top, #378b73, #2C6F5C);
   z-index: 1000;
 }
