@@ -1,9 +1,9 @@
 import React from 'react';
 import cl from './Modal.module.css';
 
-function Modal({ children, title }) {
+function Modal({ children, id, title }) {
   return (
-    <div id="openModal" className={cl.modal}>
+    <div id={id} className={cl.modal}>
       <div className={cl.modalDialog}>
         <div className={cl.modalContent}>
           <div className={cl.modalHeader}>

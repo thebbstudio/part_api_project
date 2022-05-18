@@ -6,7 +6,6 @@ import HttpService from '../http/HttpService';
 
 function Park() {
   const params = useParams();
-  console.log(params);
   const [cards, setCards] = useState([]);
 
   const getCards = async (format = 'json', id = params.id ? params.id : '') => {

@@ -11,7 +11,7 @@ function MiniatureNew({ style, news }) {
         <div className={cl.img}>
           <img src={news.img_path} alt="medals" />
         </div>
-        <p>{news.title}</p>
+        <p className="black-semi">{news.title}</p>
 
       </div>
     </Link>

@@ -111,7 +111,7 @@ function PaidForm() {
         <label htmlFor="dataProcessing" style={{ marginLeft: '1rem' }}>Согласен на обработку персональных данных</label>
       </div>
 
-      <div>
+      <div style={{ width: '100%', textAlign: 'center' }}>
         <button className={cl.btn} type="submit">Отправить заявку</button>
       </div>
     </form>

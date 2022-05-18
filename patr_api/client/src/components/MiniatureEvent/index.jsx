@@ -31,8 +31,8 @@ function MiniatureEvent({ style, event }) {
           <img src={event.img_path} alt="" />
         </div>
         <div className={cl.about}>
-          <h5>{event.title}</h5>
-          <p dangerouslySetInnerHTML={{ __html: event.description }}></p>
+          <h5 className="black-title">{event.title}</h5>
+          <p className="black-text" dangerouslySetInnerHTML={{ __html: event.description }}></p>
           {/* <p className={cl.date}>
           <span>{`${datePublication.getDate()} ${getMonth(datePublication)} ${datePublication.getFullYear()}`}</span>
         </p> */}
