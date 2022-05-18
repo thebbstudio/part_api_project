@@ -16,6 +16,7 @@ import Staff from './pages/Staff';
 import 'react-spinner-animated/dist/index.css';
 import './styles/reset.css';
 import './styles/style.css';
+import PostIdPage from './pages/PostIdPage';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path=":type" element={<Home />} />
         </Route>
         <Route path="events" element={<Events />} />
+        <Route path="post" element={<PostIdPage />} />
       </Route>
       <Route path="*" element={<ErrorPageNotFound />} />
     </Routes>
