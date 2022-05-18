@@ -12,5 +12,6 @@ urlpatterns = [
     path('videos', VideosView.as_view()),
     path('park', ParkView.as_view()),
     path('paidservises', PaidServiseView.as_view()),
-    path('parkcategories', ParkCategoriesView.as_view())
+    path('parkcategories', ParkCategoriesView.as_view()),
+    path('sendapplication',SendApplicationView.as_view())
 ]
