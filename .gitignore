@@ -6,4 +6,4 @@
 *.pot
 *.pyo
 *.pyc
-*/__pycache__/
+/patr_api/__pycache__/
