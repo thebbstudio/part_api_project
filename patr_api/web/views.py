@@ -1,3 +1,4 @@
+from asyncio import events
 from urllib import response
 from django.shortcuts import render
 from rest_framework.response import Response
@@ -5,11 +6,23 @@ from rest_framework.views import APIView
 
 from .models import *
 
+#Для почты
+import smtplib
+from email.message import EmailMessage
+from django.core.mail import send_mail
+from django.core import mail
+
+
+translateDict = {'fullName':'ФИО','phone':'Телефон',
+                'dateEvent':'Дата мероприятия','timeEvent':'Время мероприятия',
+                'duration':'Продолжительность','numberPlayers':'Количество участников','childrenWill':'Дети будит'}
 
 #someevent, eventdetail,
 def GetImgList(nameTable, postId):
     if nameTable == 'news':
         return(NewsImage.objects.filter(news_id = postId).values('id','path'))
+    elif nameTable == 'events':
+        return(EventsImage.objects.filter(events_id = postId).values('id','path'))
 
 class NewsView(APIView):
     def get(self, request):
@@ -30,33 +43,50 @@ class NewsView(APIView):
         return Response(response)
         
 
-
-
-
 class EventsView(APIView):
     def get(self, request):
 
-        if 'id' in request.GET:
-            return Response(Events.objects.filter(id = request.GET['id']).values())
-        
         numEvents = 15
         if 'numEvents' in request.GET:
             numEvents = int(request.GET['numEvents'])
-        
-        if 'isSlider' in request.GET:
-            return Response(list(Events.objects.filter(isActive=True)[:int(numEvents)].values('id','title', 'description','img_path','date_publication')))
 
-        return Response(list(Events.objects.all()[:int(numEvents)].values()))
+        if 'id' in request.GET:
+            events = Events.objects.filter(id = request.GET['id']).values()
+        else:
+            events = Events.objects.filter(isActive=True)[:int(numEvents)].values()
+
+        response = []
+        for event in events:
+            response.append({'event' : event, 'imgs' : GetImgList('events', event['id'])})
+
+        return Response(response)
+
 
 
 def ValidateParaments(listParams, reqData):
     for param in listParams:
         if param not in reqData:
             return Response({'id' : 0, 'msg' : 'Missing parameter "' + param + '"'})
-
+#https://docs.djangoproject.com/en/4.0/topics/email/
 class SendApplicationView(APIView):
     def post(self, request):
         ValidateParaments(('fullName','phone','dateEvent','timeEvent','duration','numberPlayers','childrenWill'), request.data)
+        
+        subject = 'Заявка на платное мероприятие'   
+        fromEmail = 'no-reply@patriotlesnoy.ru'
+        recipient = ['thebbstudio@mail.ru']
+
+        msgText = ''
+        for key, value in translateDict.items():
+            msgText += f'{value} : {request.data[key]}\n'
+
+        send_mail(subject, msgText, fromEmail, recipient)
+
+        with mail.get_connection() as connection:
+            mail.EmailMessage(
+                subject, msgText, fromEmail, recipient,
+                connection=connection,
+            ).send()
         return Response({'это': 'база (заглушка)'})
 
 

@@ -2,14 +2,6 @@ from distutils.command.upload import upload
 from django.db import models
 from datetime import date
 from patr_api.settings import MEDIA_ROOT
-# news
-# events
-# documents
-# staff
-# partners
-# videos
-# park
-# park_categories
 
 
 class News(models.Model):
@@ -45,6 +37,11 @@ class Events(models.Model):
 
     class Meta:
         ordering = ['-date_publication', 'title']
+
+class EventsImage(models.Model):
+    events = models.ForeignKey(Events, on_delete=models.CASCADE, default=None)
+    path = models.FileField(upload_to='img/events/heap/', default=None, blank=True)
+
 
 class PaidServise(models.Model):
     title = models.CharField(max_length=100)
