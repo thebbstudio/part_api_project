@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import cl from './CardPaidService.module.css';
-import img from '../../pages/imgs/jpg.jpg';
 import Modal from '../Modal';
 import PaidForm from '../PaidForm';
 
@@ -26,7 +25,7 @@ function CardPaidService({ data }) {
         <a href={`#modal${data.id}`}>
           <div className={`${cl.cardItem}`}>
             <div className={cl.cardImg}>
-              <img src={img} alt={data.title} />
+              {/* <img src={img} alt={data.title} /> */}
             </div>
             <div>
               <h5 className={cl.title}>
