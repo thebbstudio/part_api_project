@@ -4,6 +4,15 @@ import BASE_URL from './config';
 export default class HttpService {
   static API_URL = `${BASE_URL}/api`;
 
+  static async getNavbar({ ...obj }) {
+    const response = await axios.get(`${this.API_URL}/navbar`, {
+      params: {
+        format: obj.format,
+      },
+    });
+    return response;
+  }
+
   static async getNews({ ...obj }) {
     const response = await axios.get(`${this.API_URL}/news`, {
       params: {
