@@ -55,10 +55,48 @@ function NewsIdPage() {
                 arrow: true,
               }}
               >
-                <div><img src={`${BASE_URL}/${post.img_path}`} alt="" style={{ ...style }} /></div>
-                {post.imgs.map((img) => <div><img src={img.path} alt="" style={{ ...style }} /></div>)}
+                <div>
+                  <div style={{ marginLeft: '1rem', marginRight: '1rem' }}>
+                    <img
+                      src={post.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${post.img_path}`) : (post.img_path)}
+                      alt=""
+                      style={{
+                        ...style,
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  </div>
+                </div>
+                {post.imgs.map((img) => (
+                  <div>
+                    <div style={{ marginLeft: '1rem', marginRight: '1rem' }}>
+                      <img
+                        src={post.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${post.img_path}`) : (post.img_path)}
+                        alt=""
+                        style={{
+                          ...style,
+                          marginLeft: 'auto',
+                          marginRight: 'auto',
+                          objectFit: 'cover',
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
               </Carousel>
-            ) : <div><img src={post.img_path} alt="" style={{ ...style }} /></div>}
+            ) : (
+              <center>
+                <div>
+                  <img
+                    src={post.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${post.img_path}`) : (post.img_path)}
+                    alt=""
+                    style={{ ...style }}
+                  />
+                </div>
+              </center>
+            )}
 
           </article>
         )}
