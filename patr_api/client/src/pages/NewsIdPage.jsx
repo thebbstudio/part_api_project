@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Spinner } from 'react-spinner-animated';
 import Carousel from '../components/Carousel';
 import HttpService from '../http/HttpService';
+import BASE_URL from '../http/config';
 
 const style = {
   height: '300px',
@@ -54,7 +55,7 @@ function NewsIdPage() {
                 arrow: true,
               }}
               >
-                <div><img src={post.img_path} alt="" style={{ ...style }} /></div>
+                <div><img src={`${BASE_URL}/${post.img_path}`} alt="" style={{ ...style }} /></div>
                 {post.imgs.map((img) => <div><img src={img.path} alt="" style={{ ...style }} /></div>)}
               </Carousel>
             ) : <div><img src={post.img_path} alt="" style={{ ...style }} /></div>}
