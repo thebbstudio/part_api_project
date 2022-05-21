@@ -54,9 +54,10 @@ function NewsIdPage() {
                 arrow: true,
               }}
               >
+                <div><img src={post.img_path} alt="" style={{ ...style }} /></div>
                 {post.imgs.map((img) => <div><img src={img.path} alt="" style={{ ...style }} /></div>)}
               </Carousel>
-            ) : ''}
+            ) : <div><img src={post.img_path} alt="" style={{ ...style }} /></div>}
 
           </article>
         )}
