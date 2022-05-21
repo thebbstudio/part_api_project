@@ -39,7 +39,7 @@ class NewsView(APIView):
         response = []
         for news in newsies:
             news.update({'imgs' : GetImgList('news', news['id'])})
-            response.append({'news' : news})
+            response.append(news)
 
         return Response(response)
         
@@ -59,7 +59,7 @@ class EventsView(APIView):
         response = []
         for event in events:
             event.update({'imgs' : GetImgList('events', event['id'])})
-            response.append({'event' : event})
+            response.append(event)
 
         return Response(response)
 
