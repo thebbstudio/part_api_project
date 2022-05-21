@@ -28,7 +28,7 @@ function MiniatureEvent({ style, event }) {
       <div className={cl.miniEvent}>
 
         <div className={cl.img}>
-          <img src={event.img_path} alt={event.title} />
+          <img src={`media/${event.img_path}`} alt={event.title} />
         </div>
         <div className={cl.about}>
           <h5 className="black-title">{event.title}</h5>

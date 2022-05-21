@@ -6,7 +6,7 @@ function MiniaturePartner({ style, partner }) {
   return (
     <a style={{ ...style }} href={partner.href_string} target="_blank" rel="noreferrer">
       <div>
-        <img className={cl.img} src={partner.img_path} alt={partner.title} />
+        <img className={cl.img} src={`media/${partner.img_path}`} alt={partner.title} />
       </div>
     </a>
   );
