@@ -12,7 +12,7 @@ function Header() {
 
         <div className={cl.content}>
           <Link to="/">
-            <img className={`media/${cl.logoImg}`} src={logo} alt="logo" />
+            <img className={cl.logoImg} src={`media/${logo}`} alt="logo" />
           </Link>
           <div className={cl.colHeader}>
             <h1 className={cl.nameOrganization}>
