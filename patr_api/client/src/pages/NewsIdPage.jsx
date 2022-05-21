@@ -3,9 +3,6 @@ import { useParams } from 'react-router-dom';
 import { Spinner } from 'react-spinner-animated';
 import Carousel from '../components/Carousel';
 import HttpService from '../http/HttpService';
-import img1 from './imgs/1.jpg';
-import img2 from './imgs/2.jpg';
-import img3 from './imgs/3.jpg';
 
 const style = {
   height: '300px',
@@ -18,6 +15,7 @@ function NewsIdPage() {
   useEffect(async () => {
     const getPost = await HttpService.getPostNews({ format: 'json', id: params.id });
     setPost(getPost.data[0]);
+    console.log(getPost.data[0].imgs);
   }, []);
 
   return (
@@ -47,18 +45,19 @@ function NewsIdPage() {
               dangerouslySetInnerHTML={{ __html: post.video }}
             >
             </div>
-            <Carousel initialization={{
-              slidesForShow: 3,
-              slidesForScroll: 1,
-              auto: false,
-              interval: 0,
-              arrow: true,
-            }}
-            >
-              <div><img src={img2} alt="" style={{ ...style }} /></div>
-              <div><img src={img3} alt="" style={{ ...style }} /></div>
-              <div><img src={img1} alt="" style={{ ...style }} /></div>
-            </Carousel>
+            {post.imgs.length ? (
+              <Carousel initialization={{
+                slidesForShow: 3,
+                slidesForScroll: 1,
+                auto: false,
+                interval: 0,
+                arrow: true,
+              }}
+              >
+                {post.imgs.map((img) => <div><img src={img.path} alt="" style={{ ...style }} /></div>)}
+              </Carousel>
+            ) : ''}
+
           </article>
         )}
     </div>
