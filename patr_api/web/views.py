@@ -38,7 +38,8 @@ class NewsView(APIView):
 
         response = []
         for news in newsies:
-            response.append({'news' : news, 'imgs' : GetImgList('news', news['id'])})
+            news.update({'imgs' : GetImgList('news', news['id'])})
+            response.append({'news' : news})
 
         return Response(response)
         
@@ -57,7 +58,8 @@ class EventsView(APIView):
 
         response = []
         for event in events:
-            response.append({'event' : event, 'imgs' : GetImgList('events', event['id'])})
+            event.update({'imgs' : GetImgList('events', event['id'])})
+            response.append({'event' : event})
 
         return Response(response)
 
@@ -67,6 +69,7 @@ def ValidateParaments(listParams, reqData):
     for param in listParams:
         if param not in reqData:
             return Response({'id' : 0, 'msg' : 'Missing parameter "' + param + '"'})
+
 #https://docs.djangoproject.com/en/4.0/topics/email/
 class SendApplicationView(APIView):
     def post(self, request):

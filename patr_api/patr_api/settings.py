@@ -57,7 +57,8 @@ ROOT_URLCONF = 'patr_api.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['client/build/', os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates')],
+        #'DIRS': ['client/build/', os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates')],
+        'DIRS': [os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
