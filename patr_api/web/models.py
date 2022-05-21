@@ -47,8 +47,10 @@ class NavBar(models.Model):
     title = models.CharField(max_length=20, default=None)
     path = models.CharField(max_length=255, default=None)
     isActive = models.BooleanField(default=True)
-    importance = models.IntegerField()
+    importance = models.IntegerField(default=10)
 	
+    class Meta:
+        ordering = ['importance']
 
 
 class PaidServise(models.Model):

@@ -102,7 +102,7 @@ class DocsView(APIView):
     def get(self, request):
         resp = []
         for doc in Documents.objects.filter(isActive=True).values():
-            category = DocType.objects.filter(id=doc['category_id']).values()[0]
+            category = DocType.objects.filter(id=doc['category']).values()[0]['title']
             resp.append({'id' : doc['id'], 'href_string': doc['href_string'], 'title' : doc['title'], 'category' : category})
             
             return Response(resp)

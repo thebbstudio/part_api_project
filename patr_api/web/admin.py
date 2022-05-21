@@ -57,7 +57,7 @@ class PaidServiseAdmin(admin.ModelAdmin):
     list_display_links = ('title',)
 
 
-@admin.register(Navbar)
+@admin.register(NavBar)
 class NavbarAdmin(admin.ModelAdmin):
     list_display = ('title','importance','isActive')
     list_display_links = ('title',)
