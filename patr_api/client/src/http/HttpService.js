@@ -95,4 +95,13 @@ export default class HttpService {
     });
     return response;
   }
+
+  static async getVideo({ ...obj }) {
+    const response = await axios.get(`${this.API_URL}/videos`, {
+      params: {
+        format: obj.format,
+      },
+    });
+    return response;
+  }
 }

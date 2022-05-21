@@ -25,7 +25,7 @@ function CardPaidService({ data }) {
         <a href={`#modal${data.id}`}>
           <div className={`${cl.cardItem}`}>
             <div className={cl.cardImg}>
-              {/* <img src={img} alt={data.title} /> */}
+              <img src={data.imgPath} alt={data.title} />
             </div>
             <div>
               <h5 className={cl.title}>

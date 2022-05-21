@@ -1,7 +1,4 @@
 import React from 'react';
-
-import videoForSliderMP4 from '../../assets/video/sliderItem1.mp4';
-import videoForSliderWEBM from '../../assets/video/sliderItem1.webm';
 import Carousel from '../Carousel';
 
 function SliderVideo() {
@@ -12,16 +9,25 @@ function SliderVideo() {
     interval: 15000,
     arrow: false,
   };
+
   return (
     <section className="sliderVideo">
       <Carousel initialization={parametersCarousel}>
         <video autoPlay loop muted>
-          <source src={videoForSliderMP4} />
-          <source src={videoForSliderWEBM} />
+          <source src="media/video/sliderItem1.mp4" />
+          <source src="media/video/sliderItem1.webm" />
         </video>
         <video autoPlay loop muted>
-          <source src={videoForSliderMP4} />
-          <source src={videoForSliderWEBM} />
+          <source src="media/video/sliderItem2.mp4" />
+          <source src="media/video/sliderItem2.webm" />
+        </video>
+        <video autoPlay loop muted>
+          <source src="media/video/sliderItem3.mp4" />
+          <source src="media/video/sliderItem3.webm" />
+        </video>
+        <video autoPlay loop muted>
+          <source src="media/video/sliderItem4.mp4" />
+          <source src="media/video/sliderItem4.webm" />
         </video>
       </Carousel>
     </section>
