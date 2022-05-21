@@ -29,7 +29,7 @@ function PostItem({ post }) {
     <Link to={location.pathname === '/news' ? `/post-news/${post.id}` : `/post-event/${post.id}`}>
       <div className={cl.miniEvent}>
         <div className={cl.img}>
-          <img src={post.img_path} alt={post.title} />
+          <img src={`media/${post.img_path}`} alt={post.title} />
         </div>
         <div className={cl.about}>
           <h5 className="black-title">{post.title}</h5>
