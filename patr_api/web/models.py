@@ -21,7 +21,7 @@ class News(models.Model):
 
 class NewsImage(models.Model):
     news = models.ForeignKey(News, on_delete=models.CASCADE, default=None)
-    path = models.FileField(upload_to='img/news/heap/', default=None, blank=True)
+    path = models.ImageField(upload_to='img/news/heap/', default=None, blank=True)
 
 
 class Events(models.Model):
@@ -40,7 +40,15 @@ class Events(models.Model):
 
 class EventsImage(models.Model):
     events = models.ForeignKey(Events, on_delete=models.CASCADE, default=None)
-    path = models.FileField(upload_to='img/events/heap/', default=None, blank=True)
+    path = models.ImageField(upload_to='img/events/heap/', default=None, blank=True)
+
+
+class NavBar(models.Model):
+    title = models.CharField(max_length=20, default=None)
+    path = models.CharField(max_length=255, default=None)
+    isActive = models.BooleanField(default=True)
+    importance = models.IntegerField()
+	
 
 
 class PaidServise(models.Model):
