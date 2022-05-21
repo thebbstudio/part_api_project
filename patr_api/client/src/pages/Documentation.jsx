@@ -49,7 +49,7 @@ function Documentation() {
                 {el.map((elem) => (
                   <li key={elem.id}>
                     <a href={elem.href_string} target="_blank" rel="noreferrer">
-                      <img src={`media/${doc}`} alt="doc" />
+                      <img src={doc} alt="doc" />
                       {elem.title}
                     </a>
                   </li>
