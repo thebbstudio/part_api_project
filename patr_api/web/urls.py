@@ -13,5 +13,6 @@ urlpatterns = [
     path('park', ParkView.as_view()),
     path('paidservises', PaidServiseView.as_view()),
     path('parkcategories', ParkCategoriesView.as_view()),
-    path('sendapplication',SendApplicationView.as_view())
+    path('sendapplication',SendApplicationView.as_view()),
+    path('navbar',NavBarView.as_view()),	
 ]

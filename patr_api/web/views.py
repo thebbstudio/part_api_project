@@ -100,7 +100,12 @@ class StaffView(APIView):
 
 class DocsView(APIView): 
     def get(self, request):
-        return Response(list(Documents.objects.filter(isActive=True).values()))
+        resp = []
+        for doc in Documents.objects.filter(isActive=True).values():
+            category = DocType.objects.filter(id=doc['category_id']).values()[0]
+            resp.append({'id' : doc['id'], 'href_string': doc['href_string'], 'title' : doc['title'], 'category' : category})
+            
+            return Response(resp)
 
 
 class PartnersView(APIView): 
@@ -126,6 +131,13 @@ class ParkCategoriesView(APIView):
 class PaidServiseView(APIView): 
     def get(self, request):
         return Response(list(PaidServise.objects.filter(isActive = True).values()))
+
+
+class NavBarView(APIView):
+    def get(self, request):
+        return Response(list(NavBar.objects.filter(isActive = True).values()))
+
+
 
 
 def index(request):
