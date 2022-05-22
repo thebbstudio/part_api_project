@@ -38,6 +38,26 @@
   font-size: 1rem;
 }
 
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  border: 1px solid #fff;
+  padding: 7px 15px;
+  font-size: 1rem;
+  font-family: generalFont;
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(to bottom left, #2C6F5C, #378b73);
+  transition: all 0.2s;
+}
+.btn:hover {
+  opacity: 0.9;
+}
+.btn:active {
+  transform: scale(0.99);
+}
+
 @media (max-width: 1000px) {
   .parkCard {
     width: 50%;

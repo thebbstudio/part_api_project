@@ -113,4 +113,13 @@ export default class HttpService {
     });
     return response;
   }
+
+  static async postPaidForm({ ...obj }) {
+    const response = await axios.post(`${this.API_URL}/sendapplication`, {
+      params: {
+        format: obj.format,
+      },
+    });
+    return response;
+  }
 }

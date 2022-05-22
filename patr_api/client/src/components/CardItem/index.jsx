@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
 import cl from './CardItem.module.css';
+import BASE_URL from '../../http/config';
 
 function CardItem({ card }) {
   const params = useParams();
@@ -11,7 +12,10 @@ function CardItem({ card }) {
         <Link to={card.id.toString()}>
           <div className={`${cl.cardItem}`}>
             <div className={cl.cardImg}>
-              <img src={`media/${card.img_path}`} alt={card.title} />
+              <img
+                src={card.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${card.img_path}`) : (card.img_path)}
+                alt={card.title}
+              />
             </div>
             <p className={cl.title} dangerouslySetInnerHTML={{ __html: card.title }}></p>
           </div>
@@ -23,7 +27,10 @@ function CardItem({ card }) {
     <div className={cl.parkCard}>
       <div className={`${cl.cardItem}`}>
         <div className={cl.cardImg}>
-          <img src={`media/${card.img_path}`} alt={card.title} />
+          <img
+            src={card.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${card.img_path}`) : (card.img_path)}
+            alt={card.title}
+          />
         </div>
         <p className={cl.title} dangerouslySetInnerHTML={{ __html: card.title }}></p>
       </div>
