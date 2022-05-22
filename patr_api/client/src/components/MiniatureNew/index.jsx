@@ -2,6 +2,7 @@ import React from 'react';
 import PropType from 'prop-types';
 import { Link } from 'react-router-dom';
 import cl from './MiniatureNew.module.css';
+import BASE_URL from '../../http/config';
 
 function MiniatureNew({ style, news }) {
   return (
@@ -9,7 +10,10 @@ function MiniatureNew({ style, news }) {
       <div className={cl.miniNew}>
 
         <div className={cl.img}>
-          <img src={`media/${news.img_path}`} alt={news.title} />
+          <img
+            src={news.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${news.img_path}`) : (news.img_path)}
+            alt={news.title}
+          />
         </div>
         <p className="black-semi">{news.title}</p>
 

@@ -3,6 +3,7 @@ import React from 'react';
 import PropType from 'prop-types';
 import { Link } from 'react-router-dom';
 import cl from './MiniatureEvent.module.css';
+import BASE_URL from '../../http/config';
 
 function MiniatureEvent({ style, event }) {
   const datePublication = new Date(event.date_publication);
@@ -28,7 +29,10 @@ function MiniatureEvent({ style, event }) {
       <div className={cl.miniEvent}>
 
         <div className={cl.img}>
-          <img src={`media/${event.img_path}`} alt={event.title} />
+          <img
+            src={event.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${event.img_path}`) : (event.img_path)}
+            alt={event.title}
+          />
         </div>
         <div className={cl.about}>
           <h5 className="black-title">{event.title}</h5>
