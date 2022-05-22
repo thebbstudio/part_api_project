@@ -73,7 +73,7 @@ function NewsIdPage() {
                   <div>
                     <div style={{ marginLeft: '1rem', marginRight: '1rem' }}>
                       <img
-                        src={post.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${post.img_path}`) : (post.img_path)}
+                        src={post.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${img.path}`) : (img.path)}
                         alt=""
                         style={{
                           ...style,
