@@ -13,9 +13,6 @@ class NewsAdmin(admin.ModelAdmin):
     list_display_links = ('title',)
 
 
-@admin.register(NewsImage)
-class NewsImageAdmin(admin.ModelAdmin):
-    pass
 
 
 class EventsImageAdmin(admin.StackedInline):
@@ -29,9 +26,6 @@ class EventsAdmin(admin.ModelAdmin):
     list_display_links = ('title',)
 
 
-@admin.register(EventsImage)
-class EventsImageAdmin(admin.ModelAdmin):
-    pass
 
 
 @admin.register(Park)
@@ -53,11 +47,21 @@ class PartnersAdmin(admin.ModelAdmin):
 
 @admin.register(PaidServise)
 class PaidServiseAdmin(admin.ModelAdmin):
-    list_display = ('title','cost','isActive')
+    list_display = ('title','cost', 'dimensionMeasurement', 'isActive')
     list_display_links = ('title',)
 
 
 @admin.register(NavBar)
 class NavbarAdmin(admin.ModelAdmin):
     list_display = ('title','importance','isActive')
+    list_display_links = ('title',)
+
+@admin.register(Documents)
+class DocAdmin(admin.ModelAdmin):
+    list_display = ('title','category','isActive')
+    list_display_links = ('title',)
+    
+@admin.register(DocType)
+class DocTypeAdmin(admin.ModelAdmin):
+    list_display = ('id','title','importance')
     list_display_links = ('title',)
