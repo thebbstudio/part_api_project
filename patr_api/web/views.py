@@ -85,11 +85,12 @@ class SendApplicationView(APIView):
 
         send_mail(subject, msgText, fromEmail, recipient)
 
-        with mail.get_connection() as connection:
-            mail.EmailMessage(
-                subject, msgText, fromEmail, recipient,
-                connection=connection,
-            ).send()
+        # with mail.get_connection() as connection:
+        #     mail.EmailMessage(
+        #         subject, msgText, fromEmail, recipient,
+        #         connection=connection,
+        #     ).send()
+            
         return Response({'это': 'база (заглушка)'})
 
 
