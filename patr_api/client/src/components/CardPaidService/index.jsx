@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import cl from './CardPaidService.module.css';
 import Modal from '../Modal';
 import PaidForm from '../PaidForm';
+import BASE_URL from '../../http/config';
 
 function CardPaidService({ data }) {
   const [isActive, setIsActive] = useState(false);
@@ -25,7 +26,10 @@ function CardPaidService({ data }) {
         <a href={`#modal${data.id}`}>
           <div className={`${cl.cardItem}`}>
             <div className={cl.cardImg}>
-              <img src={`media/${data.imgPath}`} alt={data.title} />
+              <img
+                src={data.imgPath.indexOf('http') === -1 ? (`${BASE_URL}/media/${data.imgPath}`) : (data.imgPath)}
+                alt={data.title}
+              />
             </div>
             <div>
               <h5 className={cl.title}>

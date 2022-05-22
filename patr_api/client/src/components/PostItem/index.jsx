@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import cl from './PostItem.module.css';
+import BASE_URL from '../../http/config';
 
 function PostItem({ post }) {
   const location = useLocation();
@@ -29,7 +30,10 @@ function PostItem({ post }) {
     <Link to={location.pathname === '/news' ? `/post-news/${post.id}` : `/post-event/${post.id}`}>
       <div className={cl.miniEvent}>
         <div className={cl.img}>
-          <img src={`media/${post.img_path}`} alt={post.title} />
+          <img
+            src={post.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${post.img_path}`) : (post.img_path)}
+            alt={post.title}
+          />
         </div>
         <div className={cl.about}>
           <h5 className="black-title">{post.title}</h5>
