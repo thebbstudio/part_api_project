@@ -61,16 +61,18 @@ class PaidServise(models.Model):
     dimensionMeasurement = models.CharField(max_length=50)
     isActive = models.BooleanField(default=True)
 
-class Documents(models.Model):
-    title = models.CharField(max_length=150)
-    href_string = models.FileField(upload_to='docs/')
-    category = models.IntegerField()
-    isActive = models.BooleanField(default=True)
-
-
 class DocType(models.Model):
     title = models.CharField(max_length=50)
     importance = models.IntegerField(default=None)
+
+class Documents(models.Model):
+    title = models.CharField(max_length=150)
+    href_string = models.FileField(upload_to='docs/')
+    category = models.ForeignKey(DocType, on_delete=models.CASCADE)
+    isActive = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['category','title']
 
 
 class Staff(models.Model):
