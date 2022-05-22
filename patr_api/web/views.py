@@ -105,7 +105,7 @@ class DocsView(APIView):
             category = DocType.objects.filter(id=doc['category']).values()[0]['title']
             resp.append({'id' : doc['id'], 'href_string': doc['href_string'], 'title' : doc['title'], 'category' : category})
             
-            return Response(resp)
+        return Response(resp)
 
 
 class PartnersView(APIView): 
