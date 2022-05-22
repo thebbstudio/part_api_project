@@ -76,20 +76,21 @@ class SendApplicationView(APIView):
         ValidateParaments(('fullName','phone','dateEvent','timeEvent','duration','numberPlayers','childrenWill'), request.data)
         
         subject = 'Заявка на платное мероприятие'   
-        fromEmail = 'no-reply@patriotlesnoy.ru'
-        recipient = ['thebbstudio@mail.ru']
+        fromEmail = None
+        recipient = ['syomkin.seryozha@yandex.ru']
 
         msgText = ''
         for key, value in translateDict.items():
             msgText += f'{value} : {request.data[key]}\n'
 
-        send_mail(subject, msgText, fromEmail, recipient)
 
-        # with mail.get_connection() as connection:
-        #     mail.EmailMessage(
-        #         subject, msgText, fromEmail, recipient,
-        #         connection=connection,
-        #     ).send()
+        send_mail(
+            subject,
+            msgText,
+            fromEmail,
+            recipient,
+            fail_silently=False,
+        )
             
         return Response({'это': 'база (заглушка)'})
 
