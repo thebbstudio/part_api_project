@@ -40,11 +40,13 @@ function EventIdPage() {
               dangerouslySetInnerHTML={{ __html: post.description }}
             >
             </p>
-            <div
-              style={{ marginBottom: '3rem' }}
-              dangerouslySetInnerHTML={{ __html: post.video }}
-            >
-            </div>
+            <center>
+              <div
+                style={{ marginBottom: '3rem' }}
+                dangerouslySetInnerHTML={{ __html: post.video }}
+              >
+              </div>
+            </center>
             {post.imgs.length ? (
               <Carousel initialization={{
                 slidesForShow: 3,

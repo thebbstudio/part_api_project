@@ -35,7 +35,9 @@ function CardPaidService({ data }) {
               </h5>
               <p className="black-text" dangerouslySetInnerHTML={{ __html: data.description }}></p>
             </div>
-
+            <div style={{ width: '100%', textAlign: 'center' }}>
+              <button type="button" className={cl.btn}>Заполнить заявку</button>
+            </div>
           </div>
         </a>
       </div>
