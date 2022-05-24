@@ -5,7 +5,7 @@ import cl from './PaidForm.module.css';
 function PaidForm() {
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
-  const [dataEvent, setDataEvent] = useState('');
+  const [dateEvent, setDateEvent] = useState('');
   const [timeEvent, setTimeEvent] = useState('');
   const [duration, setDuration] = useState('1 час');
   const [numberPlayers, setNumberPlayers] = useState('');
@@ -23,7 +23,7 @@ function PaidForm() {
     const paidForm = {
       fullName,
       phone,
-      dataEvent,
+      dateEvent,
       timeEvent,
       duration,
       numberPlayers,
@@ -72,8 +72,8 @@ function PaidForm() {
           className={`${cl.input} ${cl.inputS}`}
           type="date"
           name="dateEvent"
-          value={dataEvent}
-          onChange={(e) => setDataEvent(e.target.value)}
+          value={dateEvent}
+          onChange={(e) => setDateEvent(e.target.value)}
           id="dateEvent"
           required
         />
