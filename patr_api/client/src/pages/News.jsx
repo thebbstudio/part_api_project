@@ -9,7 +9,6 @@ function News() {
   const getNews = async () => {
     const allNews = await HttpService.getNews({ format: 'json' });
     setNews(allNews.data);
-    // console.log(allNews.data);
   };
 
   useEffect(() => {

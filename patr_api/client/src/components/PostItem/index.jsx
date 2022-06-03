@@ -6,7 +6,6 @@ import BASE_URL from '../../http/config';
 
 function PostItem({ post }) {
   const location = useLocation();
-  // console.log(location);
   const datePublication = new Date(post.date_publication);
   const getMonth = (date) => {
     let days = [

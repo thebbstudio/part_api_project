@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { PaidDataContext } from '../../hoc/PaidDataProvider';
 import cl from './Modal.module.css';
 
-function Modal({ children, id, title }) {
+function Modal({ children, id }) {
+  const [title, setTitle] = useContext(PaidDataContext);
   return (
     <div id={id} className={cl.modal}>
       <div className={cl.modalDialog}>

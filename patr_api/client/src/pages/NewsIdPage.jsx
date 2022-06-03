@@ -16,7 +16,6 @@ function NewsIdPage() {
   useEffect(async () => {
     const getPost = await HttpService.getPostNews({ format: 'json', id: params.id });
     setPost(getPost.data[0]);
-    console.log(getPost.data[0].imgs);
   }, []);
 
   return (

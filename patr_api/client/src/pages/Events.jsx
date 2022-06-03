@@ -9,7 +9,6 @@ function Events() {
   const getEvents = async () => {
     const allEvents = await HttpService.getEvents({ format: 'json' });
     setEvents(allEvents.data);
-    // console.log(allEvents.data);
   };
 
   useEffect(() => {

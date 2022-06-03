@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import CardPaidService from '../components/CardPaidService';
 import HttpService from '../http/HttpService';
+import { PaidDataContext } from '../hoc/PaidDataProvider';
+import Modal from '../components/Modal';
+import PaidForm from '../components/PaidForm';
+import Alert from '../components/Alert';
 
 function PaidServices() {
   const [paidData, setPaidData] = useState([]);
+
+  const [showAlert, setShowAlert] = useState(false);
 
   async function getPaid() {
     const http = await HttpService.getPaidService({ format: 'json' });
@@ -17,8 +23,12 @@ function PaidServices() {
   return (
     <div className="container">
       <h1 className="title">Платные услуги</h1>
+      {showAlert ? <Alert>Ваша заявка отправлена</Alert> : ''}
       <div className="parkCards">
         {paidData.map((data) => <CardPaidService data={data} key={data.id} />)}
+        <Modal id="modal">
+          <PaidForm showAlert={showAlert} setShowAlert={setShowAlert} />
+        </Modal>
       </div>
       <div className="paidData">
         <h6>Реквизиты</h6>
