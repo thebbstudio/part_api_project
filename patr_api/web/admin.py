@@ -14,18 +14,16 @@ class NewsAdmin(admin.ModelAdmin):
 
 
 
-
 class EventsImageAdmin(admin.StackedInline):
     model = EventsImage
     extra = 1
+
 
 @admin.register(Events)
 class EventsAdmin(admin.ModelAdmin):
     inlines = [EventsImageAdmin]
     list_display = ('id', 'title', 'date_publication', 'isActive')
     list_display_links = ('title',)
-
-
 
 
 @admin.register(Park)
@@ -65,3 +63,13 @@ class DocAdmin(admin.ModelAdmin):
 class DocTypeAdmin(admin.ModelAdmin):
     list_display = ('id','title','importance')
     list_display_links = ('title',)
+
+
+@admin.register(VotingOption)
+class VotingOptionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'isActive')
+
+
+@admin.register(ListVote)
+class ListVoteAdmin(admin.ModelAdmin):
+    list_display = ('id', 'ip', 'votingOption')

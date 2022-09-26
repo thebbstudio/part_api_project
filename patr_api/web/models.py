@@ -1,7 +1,9 @@
 from distutils.command.upload import upload
+from email import charset
 from django.db import models
 from datetime import date
 from patr_api.settings import MEDIA_ROOT
+from gettext import gettext as _
 
 
 class News(models.Model):
@@ -23,6 +25,21 @@ class NewsImage(models.Model):
     news = models.ForeignKey(News, on_delete=models.CASCADE, default=None)
     path = models.ImageField(upload_to='img/news/heap/', default=None, blank=True)
 
+
+class ListVote(models.Model):
+    ip = models.CharField(_("IP"), max_length=15) 
+    votingOption = models.ForeignKey("web.VotingOption", verbose_name=_("За кого голос"), on_delete=models.CASCADE)
+    def __str__(self):
+        return self.ip
+
+
+class VotingOption(models.Model):
+    title = models.CharField(_("Заголовок"), max_length=50)
+    description = models.CharField(_("Описание"), max_length=100)
+    isActive = models.BooleanField(_("Активно"), default=True)
+    url = models.FileField(_("Загрузка видео"), upload_to='voteVideo',blank=True,null=True)
+    def __str__(self):
+        return self.title
 
 class Events(models.Model):
     title = models.CharField(max_length=100)
