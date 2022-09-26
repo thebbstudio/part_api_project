@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-spinner-animated';
 import doc from '../assets/img/doc.svg';
 import HttpService from '../http/HttpService';
+import BASE_URL from '../http/config';
 
 function Documentation() {
   const [docs, setDocs] = useState([]);
@@ -48,7 +49,7 @@ function Documentation() {
               <ul className="docs-ul">
                 {el.map((elem) => (
                   <li key={elem.id}>
-                    <a href={elem.href_string} target="_blank" rel="noreferrer">
+                    <a href={`${BASE_URL}/media/${elem.href_string}`} target="_blank" rel="noreferrer">
                       <img src={doc} alt="doc" />
                       {elem.title}
                     </a>

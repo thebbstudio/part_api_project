@@ -18,6 +18,7 @@ import './styles/reset.css';
 import './styles/style.css';
 import NewsIdPage from './pages/NewsIdPage';
 import EventIdPage from './pages/EventIdPage';
+import PaidDataProvider from './hoc/PaidDataProvider';
 
 function App() {
   return (
@@ -25,7 +26,14 @@ function App() {
       <Route path="/" element={<MainPage />}>
         <Route index element={<Home />} />
         <Route path="news" element={<News />} />
-        <Route path="paidservices" element={<PaidServices />} />
+        <Route
+          path="paidservices"
+          element={(
+            <PaidDataProvider>
+              <PaidServices />
+            </PaidDataProvider>
+          )}
+        />
         <Route path="staff" element={<Staff />} />
         <Route path="documentation" element={<Documentation />} />
         <Route path="park" element={<Park />}>

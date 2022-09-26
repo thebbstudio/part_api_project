@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import HttpService from '../../http/HttpService';
+import Alert from '../Alert';
 import cl from './PaidForm.module.css';
 
-function PaidForm() {
+function PaidForm({ showAlert, setShowAlert }) {
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
-  const [dataEvent, setDataEvent] = useState('');
+  const [dateEvent, setDateEvent] = useState('');
   const [timeEvent, setTimeEvent] = useState('');
   const [duration, setDuration] = useState('1 час');
   const [numberPlayers, setNumberPlayers] = useState('');
@@ -15,21 +16,36 @@ function PaidForm() {
 
   async function httpForm(_paidForm) {
     const response = await HttpService.postPaidForm({ format: 'json', ..._paidForm });
+
     return response;
+  }
+
+  function cleanForm() {
+    setFullName('');
+    setPhone('');
+    setDateEvent('');
+    setTimeEvent('');
+    setDuration('1 час');
+    setNumberPlayers('');
+    setChildrenWill('yes');
+    setRules(false);
+    setDataProcessing(false);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    const paidForm = {
+    httpForm({
       fullName,
       phone,
-      dataEvent,
+      dateEvent,
       timeEvent,
       duration,
       numberPlayers,
       childrenWill,
-    };
-    httpForm(paidForm);
+    });
+    setShowAlert(!showAlert);
+    cleanForm();
+    window.location.hash = '#close';
   }
 
   return (
@@ -72,8 +88,8 @@ function PaidForm() {
           className={`${cl.input} ${cl.inputS}`}
           type="date"
           name="dateEvent"
-          value={dataEvent}
-          onChange={(e) => setDataEvent(e.target.value)}
+          value={dateEvent}
+          onChange={(e) => setDateEvent(e.target.value)}
           id="dateEvent"
           required
         />
@@ -162,7 +178,7 @@ function PaidForm() {
           required
         />
         <label htmlFor="rules" style={{ marginLeft: '1rem' }}>
-          <a className="ref" href="">С правилами ВТИ МБУ ЦПВДМ ознакомлен</a>
+          <a className="ref" href="" target="_blank">С правилами ВТИ МБУ ЦПВДМ ознакомлен</a>
         </label>
       </div>
 
@@ -177,7 +193,6 @@ function PaidForm() {
         />
         <label htmlFor="dataProcessing" style={{ marginLeft: '1rem' }}>Согласен на обработку персональных данных</label>
       </div>
-
       <div style={{ width: '100%', textAlign: 'center' }}>
         <button className={cl.btn} type="submit">Отправить заявку</button>
       </div>
