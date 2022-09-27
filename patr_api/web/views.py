@@ -12,10 +12,25 @@ from email.message import EmailMessage
 from django.core.mail import send_mail
 from django.core import mail
 
+import requests
+import json
+from rest_framework import status
+from django.db.models import Count
+
 
 translateDict = {'fullName':'ФИО','phone':'Телефон',
                 'dateEvent':'Дата мероприятия','timeEvent':'Время мероприятия',
                 'duration':'Продолжительность','numberPlayers':'Количество участников','childrenWill':'Дети будит'}
+
+
+def GetClientIp(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
 
 #someevent, eventdetail,
 def GetImgList(nameTable, postId):
@@ -79,6 +94,7 @@ class SendApplicationView(APIView):
         fromEmail = None
         recipient = ['syomkin.seryozha@yandex.ru']
 
+        
         msgText = ''
         for key, value in translateDict.items():
             msgText += f'{value} : {request.data[key]}\n'
@@ -140,7 +156,59 @@ class NavBarView(APIView):
         return Response(list(NavBar.objects.filter(isActive = True).values()))
 
 
+class VoteView(APIView):
+    def get(self, request):
+        ip = GetClientIp(request)
 
+
+        request_url = 'https://geolocation-db.com/jsonp/' + ip
+        response = requests.get(request_url)
+        result = response.content.decode().split("(")[1].strip(")")
+        result  = json.loads(result)
+        # Если чел не из рашки пошёл нахуй
+        if result['country_name'] not in ['Russia'] and ip not in ['127.0.0.1']:
+            return Response(status=status.HTTP_403_FORBIDDEN, data={
+                'msg' : 'Access denied for your region'
+            })
+
+        data = []
+        vote = ListVote.objects.filter(ip=ip).first()
+        
+        if not vote: # Нет такого голоса, выкидываем все возможные варианты
+            respData = VotingOption.objects.filter(isActive=True).values('id', 'url', 'title', 'description')
+        else: # Если есть IP то бахаем результаты голосования
+            respData = VotingOption.objects.filter(isActive=True).values('id', 'url', 'title', 'description')
+            for elem in respData:
+                count = ListVote.objects.filter(votingOption=elem['id']).values('votingOption').annotate(count=Count('votingOption'))
+                if not count:
+                    elem['count'] = 0
+                else:
+                    elem['count'] = count[0]['count']
+        return Response(data={
+            'data' : respData
+        })
+
+    def post(self, request):
+        id = request.data['data']['id']
+        ip = GetClientIp(request)
+
+        
+        vote = ListVote.objects.filter(ip=ip).first()
+        if vote:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data = {
+                'msg' : 'stop voting'
+            })
+        try:
+            ListVote(ip=ip, votingOption=VotingOption.objects.get(id=id)).save()
+            return Response(data={
+                'msg' : 'good'
+            })
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data={
+                'data' : 'This option does not exist'
+            })
+
+        return Response()
 
 def index(request):
     return render(request, 'index.html')

@@ -15,4 +15,5 @@ urlpatterns = [
     path('parkcategories', ParkCategoriesView.as_view()),
     path('sendapplication',SendApplicationView.as_view()),
     path('navbar',NavBarView.as_view()),	
+    path('vote/', VoteView.as_view()),
 ]
