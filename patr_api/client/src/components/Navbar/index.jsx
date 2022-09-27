@@ -50,6 +50,11 @@ function Navbar() {
             </li>
 
           ))}
+          <li className={cl.listItem}>
+            <Link to="/contest">
+              Конкурс
+            </Link>
+          </li>
         </ul>
 
       </div>

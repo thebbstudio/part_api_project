@@ -1,6 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
+import PaidDataProvider from './hoc/PaidDataProvider';
+
 // components
 import Documentation from './pages/Documentation';
 import ErrorPageNotFound from './pages/ErrorPageNotFound';
@@ -11,14 +13,13 @@ import News from './pages/News';
 import PaidServices from './pages/PaidServices';
 import Park from './pages/Park';
 import Staff from './pages/Staff';
-
+import NewsIdPage from './pages/NewsIdPage';
+import EventIdPage from './pages/EventIdPage';
+import ContestPage from './pages/Contest';
 // styles
 import 'react-spinner-animated/dist/index.css';
 import './styles/reset.css';
 import './styles/style.css';
-import NewsIdPage from './pages/NewsIdPage';
-import EventIdPage from './pages/EventIdPage';
-import PaidDataProvider from './hoc/PaidDataProvider';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path="post-event" element={<EventIdPage />}>
           <Route path=":id" element={<EventIdPage />} />
         </Route>
+        <Route path="contest" element={<ContestPage />} />
       </Route>
       <Route path="*" element={<ErrorPageNotFound />} />
     </Routes>

@@ -1,4 +1,5 @@
 import React from 'react';
+import BASE_URL from '../../http/config';
 import Carousel from '../Carousel';
 
 function SliderVideo() {
@@ -14,7 +15,7 @@ function SliderVideo() {
     <section className="sliderVideo">
       <Carousel initialization={parametersCarousel}>
         <video autoPlay loop muted>
-          <source src="media/video/sliderItem1.mp4" />
+          <source src={`${BASE_URL}/media/video/sliderItem1.mp4`} />
           <source src="media/video/sliderItem1.webm" />
         </video>
         <video autoPlay loop muted>

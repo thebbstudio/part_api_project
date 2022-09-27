@@ -122,4 +122,23 @@ export default class HttpService {
     });
     return response;
   }
+
+  static async getContest({ ...obj }) {
+    const response = await axios.get(`${this.API_URL}/vote/`, {
+      params: {
+        ...obj,
+      },
+    });
+    return response;
+  }
+
+  static async voteContest({ ...obj }) {
+    const response = await axios.post(`${this.API_URL}/vote/`, {
+      data: {
+        format: obj.format,
+        id: obj.id,
+      },
+    });
+    return response;
+  }
 }
