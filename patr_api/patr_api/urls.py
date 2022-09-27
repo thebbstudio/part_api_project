@@ -16,6 +16,7 @@ urlpatterns = [
     path('paidservices', index),
     path('documentation', index),
     path('post', index),
+    path('contest', index),
     
     path('admin/', admin.site.urls),
     path('api/', include('web.urls'))
