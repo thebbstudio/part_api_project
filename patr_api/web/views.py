@@ -7,10 +7,16 @@ from rest_framework.views import APIView
 from .models import *
 
 #Для почты
+
+#Для почты
+# # Import smtplib for the actual sending function
 import smtplib
-from email.message import EmailMessage
-from django.core.mail import send_mail
-from django.core import mail
+
+# Import the email modules we'll need
+from email.mime.text import MIMEText
+from web.TelegramSender import TelegramSender
+from django.views.decorators.csrf import csrf_exempt
+
 
 import requests
 import json
@@ -57,7 +63,7 @@ class NewsView(APIView):
             response.append(news)
 
         return Response(response)
-        
+ 
 
 class EventsView(APIView):
     def get(self, request):
@@ -83,32 +89,54 @@ class EventsView(APIView):
 def ValidateParaments(listParams, reqData):
     for param in listParams:
         if param not in reqData:
-            return Response({'id' : 0, 'msg' : 'Missing parameter "' + param + '"'})
-
+            # raise Response({'id' : 0, 'msg' : 'Missing parameter "' + param + '"'})
+            print('request data', reqData)
+            print('Missing parameter "', param, '"')
+            raise PermissionDenied('Missing parameter "' + param + '"')
 #https://docs.djangoproject.com/en/4.0/topics/email/
 class SendApplicationView(APIView):
+    @csrf_exempt
     def post(self, request):
-        ValidateParaments(('fullName','phone','dateEvent','timeEvent','duration','numberPlayers','childrenWill'), request.data)
-        
-        subject = 'Заявка на платное мероприятие'   
-        fromEmail = None
-        recipient = ['syomkin.seryozha@yandex.ru']
+        ValidateParaments(('fullName','phone','dateEvent','timeEvent','duration','numberPlayers','childrenWill'), request.data['params'])
+        reqData = request.data['params']
 
-        
+        # subject = 'Заявка на платное мероприятие'   
+        # fromEmail = None
+        # recipient = ['syomkin.seryozha@yandex.ru']
         msgText = ''
         for key, value in translateDict.items():
-            msgText += f'{value} : {request.data[key]}\n'
+            msgText += f'{value} : {reqData[key]}\n'
+        
+        # tg = TelegramSender()
+        # tg.send(msgText, 'Patriot Lesnoy')
 
+        msg = MIMEText(msgText)
+        
+        msg['Subject'] = 'Заявка на платное мероприятие'
+        msg['From'] = 'no-reply@patriotlesnoy.ru'
+        msg['To'] = ", ".join(['syomkin.seryozha@yandex.ru', 'cpvdm@edu-lesnoy.ru'])
 
-        send_mail(
-            subject,
-            msgText,
-            fromEmail,
-            recipient,
-            fail_silently=False,
-        )
-            
+        
+        s = smtplib.SMTP('smtp.timeweb.ru')
+
+        
+        s.login('no-reply@patriotlesnoy.ru', 'SRQs5m9w9ML9gCS1')
+
+        
+        try:
+            s.sendmail(msg['From'], msg['To'], msg.as_string())
+        finally:
+            s.quit()
+        
+        # send_mail(
+        #     subject,
+        #     msgText,
+        #     fromEmail,
+        #     recipient,
+        #     fail_silently=False,
+        # )
         return Response({'это': 'база (заглушка)'})
+
 
 
 class StaffView(APIView):
@@ -121,17 +149,16 @@ class DocsView(APIView):
         resp = []
         for doc in Documents.objects.filter(isActive=True).values():
             category = DocType.objects.filter(id=doc['category_id']).values()[0]['title']
-            resp.append({'id' : doc['id'], 'href_string': doc['href_string'], 'title' : doc['title'], 'category' : category})
-            
+            resp.append({'id' : doc['id'], 'href_string': doc['href_string'], 'title' : doc['title'], 'category' : category}) 
         return Response(resp)
 
 
-class PartnersView(APIView): 
+class PartnersView(APIView):
     def get(self, request):
         return Response(list(Partners.objects.filter(isActive=True).values()))
 
 
-class VideosView(APIView): 
+class VideosView(APIView):
     def get(self, request):
         return Response(list(Videos.objects.all().values()))
 
@@ -141,7 +168,7 @@ class ParkView(APIView):
         return Response(list(Park.objects.filter(category_id=request.GET['id']).values('id', 'title', 'img_path')))
 
 
-class ParkCategoriesView(APIView): 
+class ParkCategoriesView(APIView):
     def get(self, request):
         return Response(list(ParkCategories.objects.all().values()))
 
@@ -173,7 +200,7 @@ class VoteView(APIView):
 
         data = []
         vote = ListVote.objects.filter(ip=ip).first()
-        
+
         if not vote: # Нет такого голоса, выкидываем все возможные варианты
             respData = VotingOption.objects.filter(isActive=True).values('id', 'url', 'title', 'description')
         else: # Если есть IP то бахаем результаты голосования
@@ -191,8 +218,6 @@ class VoteView(APIView):
     def post(self, request):
         id = request.data['data']['id']
         ip = GetClientIp(request)
-
-        
         vote = ListVote.objects.filter(ip=ip).first()
         if vote:
             return Response(status=status.HTTP_400_BAD_REQUEST, data = {
