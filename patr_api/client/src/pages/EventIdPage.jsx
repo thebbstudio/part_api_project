@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Spinner } from 'react-spinner-animated';
 import Carousel from '../components/Carousel';
 import HttpService from '../http/HttpService';
 import BASE_URL from '../http/config';
 
-const style = {
-  height: '300px',
-};
-
 function EventIdPage() {
   const params = useParams();
-  const [post, setPost] = useState();
+  const [post, setPost] = React.useState();
 
-  useEffect(async () => {
-    const getPost = await HttpService.getPostEvent({ format: 'json', id: params.id });
-    setPost(getPost.data[0]);
+  React.useEffect(async () => {
+    await HttpService.getPostEvent({ format: 'json', id: params.id })
+      .then((res) => setPost(res.data[0]));
   }, []);
 
   return (
@@ -56,32 +52,15 @@ function EventIdPage() {
                 arrow: true,
               }}
               >
-                <div>
-                  <div style={{ marginLeft: '1rem', marginRight: '1rem' }}>
-                    <img
-                      src={post.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${post.img_path}`) : (post.img_path)}
-                      alt=""
-                      style={{
-                        ...style,
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
-                        objectFit: 'cover',
-                      }}
-                    />
-                  </div>
-                </div>
                 {post.imgs.map((img) => (
-                  <div style={{ marginLeft: '1rem', marginRight: '1rem' }}>
-                    <img
-                      src={post.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${img.path}`) : (img.path)}
-                      alt=""
-                      style={{
-                        ...style,
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
-                        objectFit: 'cover',
-                      }}
-                    />
+                  <div>
+                    <div style={{ marginLeft: '1rem', marginRight: '1rem', height: '300px' }}>
+                      <img
+                        src={post.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${img.path}`) : (img.path)}
+                        alt=""
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
                   </div>
                 ))}
               </Carousel>
@@ -91,7 +70,7 @@ function EventIdPage() {
                   <img
                     src={post.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${post.img_path}`) : (post.img_path)}
                     alt=""
-                    style={{ ...style }}
+                    style={{ height: '300px' }}
                   />
                 </div>
               </center>

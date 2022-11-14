@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable max-len */
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Spinner } from 'react-spinner-animated';
 import Carousel from '../components/Carousel';
 import HttpService from '../http/HttpService';
 import BASE_URL from '../http/config';
 
-const style = {
-  height: '300px',
-};
-
 function NewsIdPage() {
   const params = useParams();
-  const [post, setPost] = useState();
+  const [post, setPost] = React.useState();
 
-  useEffect(async () => {
-    const getPost = await HttpService.getPostNews({ format: 'json', id: params.id });
-    setPost(getPost.data[0]);
+  React.useEffect(async () => {
+    await HttpService.getPostNews({ format: 'json', id: params.id })
+      .then((res) => setPost(res.data[0]));
   }, []);
 
   return (
@@ -56,30 +53,15 @@ function NewsIdPage() {
                 arrow: true,
               }}
               >
-                <div>
-                  <div style={{ marginLeft: '1rem', marginRight: '1rem' }}>
-                    <img
-                      src={post.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${post.img_path}`) : (post.img_path)}
-                      alt=""
-                      style={{
-                        ...style,
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
-                        objectFit: 'cover',
-                      }}
-                    />
-                  </div>
-                </div>
                 {post.imgs.map((img) => (
                   <div>
-                    <div style={{ marginLeft: '1rem', marginRight: '1rem' }}>
+                    <div style={{ marginLeft: '1rem', marginRight: '1rem', height: '300px' }}>
                       <img
                         src={post.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${img.path}`) : (img.path)}
                         alt=""
                         style={{
-                          ...style,
-                          marginLeft: 'auto',
-                          marginRight: 'auto',
+                          width: '100%',
+                          height: '100%',
                           objectFit: 'cover',
                         }}
                       />
@@ -93,7 +75,7 @@ function NewsIdPage() {
                   <img
                     src={post.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${post.img_path}`) : (post.img_path)}
                     alt=""
-                    style={{ ...style }}
+                    style={{ height: '100px' }}
                   />
                 </div>
               </center>
