@@ -75,7 +75,7 @@ function NewsIdPage() {
                   <img
                     src={post.img_path.indexOf('http') === -1 ? (`${BASE_URL}/media/${post.img_path}`) : (post.img_path)}
                     alt=""
-                    style={{ height: '100px' }}
+                    style={{ height: '300px' }}
                   />
                 </div>
               </center>
